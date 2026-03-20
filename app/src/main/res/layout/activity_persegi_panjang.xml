@@ -1,0 +1,96 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D6E2F1">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@android:drawable/arrow_up_float"
+        android:rotation="270"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+        app:tint="#3c3c3d" />
+
+    <LinearLayout
+        android:id="@+id/formContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="#FFFFFF"
+
+        android:elevation="10dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="📏 Persegi Panjang 📏"
+            android:textColor="#2A3B55"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/inputPanjang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#F0F4FA"
+            android:hint="Input Panjang"
+            android:padding="12dp"
+            android:textColor="#2A3B55"
+            android:textColorHint="#7A8CA5" />
+
+        <EditText
+            android:id="@+id/inputLebar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="#F0F4FA"
+            android:hint="Input Lebar"
+            android:padding="12dp"
+            android:textColor="#2A3B55"
+            android:textColorHint="#7A8CA5" />
+
+        <Button
+            android:id="@+id/btnHitung"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Hitung" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Hasil"
+            android:textColor="#2A3B55"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtHasil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#3d5492"
+            android:padding="15dp"
+            android:text="Keliling:\nLuas:"
+            android:textColor="#d8d8d8"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
