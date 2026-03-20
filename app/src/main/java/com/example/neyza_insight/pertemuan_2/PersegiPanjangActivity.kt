@@ -11,7 +11,6 @@ import com.example.neyza_insight.R
 class PersegiPanjangActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_persegi_panjang)
 
@@ -20,16 +19,13 @@ class PersegiPanjangActivity : AppCompatActivity() {
         val btnHitung = findViewById<Button>(R.id.btnHitung)
         val txtHasil = findViewById<TextView>(R.id.txtHasil)
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
-
         btnBack.setOnClickListener {
             finish()
         }
 
         btnHitung.setOnClickListener {
-
             val p = inputPanjang.text.toString().toDouble()
             val l = inputLebar.text.toString().toDouble()
-
             val keliling = 2 * (p + l)
             val luas = p * l
 
