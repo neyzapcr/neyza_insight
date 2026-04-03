@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/urbanist_semibold"
-        android:text="Halo, User!"
+        android:text="@string/welcome_user"
         android:textColor="@color/text_dark"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
