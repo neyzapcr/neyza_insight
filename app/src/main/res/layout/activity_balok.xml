@@ -6,19 +6,20 @@
     android:background="#D6E2F1">
 
     <!-- Back Button -->
-    <ImageButton
+
+
+    <ImageView
         android:id="@+id/btnBack"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@android:drawable/arrow_up_float"
-        android:rotation="270"
-        android:background="@android:color/transparent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/btnback"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:tint="#3c3c3d" />
-
 
     <LinearLayout
         android:id="@+id/formContainer"

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Learnify</string>
 
-    <!-- LOGIN -->
     <string name="login_title">Login to Your Account</string>
     <string name="login_desc">Welcome back! Please sign in to continue using Learnify.</string>
     <string name="username">Username</string>
@@ -11,8 +10,64 @@
     <string name="login">Sign In</string>
     <string name="remember_me">Remember me</string>
 
+    <string name="back">Kembali</string>
+    <string name="logout">🚪Logout</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+
     <!-- WELCOME -->
     <string name="welcome_title">Welcome to Learnify 👋</string>
     <string name="welcome_user">Halo, %1$s!</string>
     <string name="welcome_desc">Your all-in-one learning app for smarter study, better progress, &amp; quality education!</string>
+    <string name="dashboard_welcome_preview">Welcome %1$s! 👋</string>
+    <string name="dashboard_desc">Siap belajar hari ini?</string>
+    <string name="btn_rumus_ruang">📐 Kalkulator </string>
+    <string name="btn_custom_1">📚Category</string>
+    <string name="btn_custom_2">⭐ Favorite</string>
+
+    <string name="logout_confirm_title">Konfirmasi Logout</string>
+    <string name="logout_confirm_message">Apakah Anda yakin ingin logout?</string>
+    <string name="logout_cancelled">Logout dibatalkan</string>
+
+    <string name="category_small_title">📚 Category</string>
+    <string name="tab_all">All</string>
+
+    <string name="category_design">Design</string>
+    <string name="category_marketing">Digital Marketing</string>
+    <string name="category_programming">Programming</string>
+    <string name="category_productivity">Productivity</string>
+
+    <string name="course_10">10 Course</string>
+    <string name="course_15">15 Course</string>
+    <string name="course_25">25 Course</string>
+    <string name="favorite">⭐ Saved</string>
+    <string name="favorite_title">📚 My Learning List</string>
+
+    <string name="course_1_name">🎨 UI/UX Design Basics</string>
+    <string name="course_1_category">Design</string>
+    <string name="course_1_rating">⭐ 4.5</string>
+
+    <string name="course_2_name">💻 Web Development Basics</string>
+    <string name="course_2_category">Programming</string>
+    <string name="course_2_rating">⭐ 4.6</string>
+
+    <string name="course_3_name">🧠 Time Management Skills</string>
+    <string name="course_3_category">Productivity</string>
+    <string name="course_3_rating">⭐ 4.4</string>
+
+    <string name="course_4_name">🎬 Motion Design Basics</string>
+    <string name="course_4_category">Design</string>
+    <string name="course_4_rating">⭐ 4.7</string>
+
+    <string name="course_5_name">🤖 AI Tools Fundamentals</string>
+    <string name="course_5_category">Programming</string>
+    <string name="course_5_rating">⭐ 4.6</string>
+
+    <string name="course_6_name">📱 Mobile App Design Basics</string>
+    <string name="course_6_category">Design</string>
+    <string name="course_6_rating">⭐ 4.6</string>
+
+    <string name="course_7_name">🌐 Frontend Dev Basics</string>
+    <string name="course_7_category">Programming</string>
+    <string name="course_7_rating">⭐ 4.7</string>
 </resources>

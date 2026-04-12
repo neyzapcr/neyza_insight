@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_blue">
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@null"
+        android:contentDescription="@string/back"
+        android:src="@drawable/btnback"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPageTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/urbanist_bold"
+        android:text="@string/favorite_title"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+    <TextView
+        android:id="@+id/tvPageDescTop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/urbanist_semibold"
+        android:text="@string/welcome_user"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack" />
+
+    <TextView
+        android:id="@+id/tvPageDescBottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/urbanist_medium"
+        android:text="@string/dashboard_desc"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPageDescTop" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mainFavoriteCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPageDescBottom">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCourse1"
+                    android:layout_width="0dp"
+                    android:layout_height="88dp"
+                    app:cardBackgroundColor="@color/bg_light"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/imgCourse1"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avt1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse1Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:text="@string/course_1_name"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar1"
+                            app:layout_constraintStart_toEndOf="@id/imgCourse1"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse1Category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_1_category"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar1"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse1Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse1Name" />
+
+                        <TextView
+                            android:id="@+id/txtCourse1Rating"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_1_rating"
+                            android:textColor="@color/primary_blue"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar1"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse1Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse1Category" />
+
+                        <ImageButton
+                            android:id="@+id/btnStar1"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star_big_on"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCourse2"
+                    android:layout_width="0dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="@color/bg_light"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardCourse1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/imgCourse2"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avt1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse2Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:text="@string/course_2_name"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar2"
+                            app:layout_constraintStart_toEndOf="@id/imgCourse2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse2Category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_2_category"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar2"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse2Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse2Name" />
+
+                        <TextView
+                            android:id="@+id/txtCourse2Rating"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_2_rating"
+                            android:textColor="@color/primary_blue"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar2"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse2Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse2Category" />
+
+                        <ImageButton
+                            android:id="@+id/btnStar2"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star_big_on"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCourse3"
+                    android:layout_width="0dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="@color/bg_light"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardCourse2">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/imgCourse3"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avt1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse3Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:text="@string/course_3_name"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar3"
+                            app:layout_constraintStart_toEndOf="@id/imgCourse3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse3Category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_3_category"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar3"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse3Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse3Name" />
+
+                        <TextView
+                            android:id="@+id/txtCourse3Rating"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_3_rating"
+                            android:textColor="@color/primary_blue"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar3"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse3Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse3Category" />
+
+                        <ImageButton
+                            android:id="@+id/btnStar3"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star_big_on"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCourse4"
+                    android:layout_width="0dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="@color/bg_light"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardCourse3">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/imgCourse4"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avt1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse4Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:text="@string/course_4_name"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar4"
+                            app:layout_constraintStart_toEndOf="@id/imgCourse4"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse4Category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_4_category"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar4"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse4Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse4Name" />
+
+                        <TextView
+                            android:id="@+id/txtCourse4Rating"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_4_rating"
+                            android:textColor="@color/primary_blue"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar4"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse4Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse4Category" />
+
+                        <ImageButton
+                            android:id="@+id/btnStar4"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star_big_on"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCourse5"
+                    android:layout_width="0dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="@color/bg_light"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardCourse4">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/imgCourse5"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avt1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse5Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:text="@string/course_5_name"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar5"
+                            app:layout_constraintStart_toEndOf="@id/imgCourse5"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse5Category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_5_category"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar5"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse5Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse5Name" />
+
+                        <TextView
+                            android:id="@+id/txtCourse5Rating"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_5_rating"
+                            android:textColor="@color/primary_blue"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar5"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse5Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse5Category" />
+
+                        <ImageButton
+                            android:id="@+id/btnStar5"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star_big_on"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCourse6"
+                    android:layout_width="0dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="@color/bg_light"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardCourse5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/imgCourse6"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avt1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse6Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:text="@string/course_6_name"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar6"
+                            app:layout_constraintStart_toEndOf="@id/imgCourse6"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse6Category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_6_category"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar6"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse6Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse6Name" />
+
+                        <TextView
+                            android:id="@+id/txtCourse6Rating"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_6_rating"
+                            android:textColor="@color/primary_blue"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar6"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse6Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse6Category" />
+
+                        <ImageButton
+                            android:id="@+id/btnStar6"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star_big_on"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCourse7"
+                    android:layout_width="0dp"
+                    android:layout_height="88dp"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="@color/bg_light"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardCourse6">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/imgCourse7"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avt1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse7Name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:text="@string/course_7_name"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar7"
+                            app:layout_constraintStart_toEndOf="@id/imgCourse7"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtCourse7Category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_7_category"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar7"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse7Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse7Name" />
+
+                        <TextView
+                            android:id="@+id/txtCourse7Rating"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/urbanist_medium"
+                            android:text="@string/course_7_rating"
+                            android:textColor="@color/primary_blue"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toStartOf="@id/btnStar7"
+                            app:layout_constraintStart_toStartOf="@id/txtCourse7Name"
+                            app:layout_constraintTop_toBottomOf="@id/txtCourse7Category" />
+
+                        <ImageButton
+                            android:id="@+id/btnStar7"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star_big_on"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

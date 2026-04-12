@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.neyza_insight.R
 
@@ -19,20 +21,30 @@ class BalokActivity : AppCompatActivity() {
         val inputTinggi = findViewById<EditText>(R.id.inputTinggi)
         val btnHitung = findViewById<Button>(R.id.btnHitung)
         val txtHasil = findViewById<TextView>(R.id.txtHasil)
-        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        val btnBack = findViewById<ImageView>(R.id.btnBack)
+
         btnBack.setOnClickListener {
             finish()
         }
 
         btnHitung.setOnClickListener {
-            val p = inputPanjang.text.toString().toDouble()
-            val l = inputLebar.text.toString().toDouble()
-            val t = inputTinggi.text.toString().toDouble()
-            val volume = p * l * t
-            val luas = 2 * (p*l + p*t + l*t)
+            val pText = inputPanjang.text.toString().trim()
+            val lText = inputLebar.text.toString().trim()
+            val tText = inputTinggi.text.toString().trim()
 
-            txtHasil.text =
-                "Volume : $volume\nLuas Permukaan : $luas"
+            if (pText.isEmpty() || lText.isEmpty() || tText.isEmpty()) {
+                Toast.makeText(this, "Semua input wajib diisi", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val p = pText.toDouble()
+            val l = lText.toDouble()
+            val t = tText.toDouble()
+
+            val volume = p * l * t
+            val luas = 2 * (p * l + p * t + l * t)
+
+            txtHasil.text = "Volume : $volume\nLuas Permukaan : $luas"
         }
     }
 }

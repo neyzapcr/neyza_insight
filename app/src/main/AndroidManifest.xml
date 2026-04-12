@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeyzaInsight">
         <activity
+            android:name=".pertemuan_4.FavoriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan_4.CategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan_4.DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".pertemuan_3.WelcomeActivity"
             android:exported="false" />
         <activity
@@ -31,8 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".pertemuan_2.MainActivity"
-            android:exported="false">
-                    </activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
