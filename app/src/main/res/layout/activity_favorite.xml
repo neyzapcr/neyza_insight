@@ -113,7 +113,7 @@
                             android:layout_height="56dp"
                             android:contentDescription="@null"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/avt1"
+                            android:src="@drawable/uiux"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -193,7 +193,7 @@
                             android:layout_height="56dp"
                             android:contentDescription="@null"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/avt1"
+                            android:src="@drawable/web"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -273,7 +273,7 @@
                             android:layout_height="56dp"
                             android:contentDescription="@null"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/avt1"
+                            android:src="@drawable/time"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -353,7 +353,7 @@
                             android:layout_height="56dp"
                             android:contentDescription="@null"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/avt1"
+                            android:src="@drawable/motion"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -433,7 +433,7 @@
                             android:layout_height="56dp"
                             android:contentDescription="@null"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/avt1"
+                            android:src="@drawable/ai"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -512,7 +512,7 @@
                             android:layout_height="56dp"
                             android:contentDescription="@null"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/avt1"
+                            android:src="@drawable/mobiledesign"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -592,7 +592,7 @@
                             android:layout_height="56dp"
                             android:contentDescription="@null"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/avt1"
+                            android:src="@drawable/fronteend"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

@@ -41,9 +41,9 @@ class DashboardActivity : AppCompatActivity() {
             intent.putExtra("page_title", pageTitle)
             intent.putExtra("page_desc", pageDesc)
 
-            intent.putExtra("name", "Politeknik Caltex Riau")
-            intent.putExtra("from", "Rumbai")
-            intent.putExtra("age", 25)
+            intent.putExtra("name", "Neyza")
+            intent.putExtra("from", "Pekanbaru")
+            intent.putExtra("age", 20)
 
             startActivity(intent)
         }
@@ -53,9 +53,9 @@ class DashboardActivity : AppCompatActivity() {
             intent.putExtra("page_title", pageTitle)
             intent.putExtra("page_desc", pageDesc)
 
-            intent.putExtra("name", "Politeknik Caltex Riau")
-            intent.putExtra("from", "Rumbai")
-            intent.putExtra("age", 25)
+            intent.putExtra("name", "Neyza")
+            intent.putExtra("from", "Pekanbaru")
+            intent.putExtra("age", 20)
 
             startActivity(intent)
         }
