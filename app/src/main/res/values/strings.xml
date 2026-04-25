@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Learnify</string>
+    <string name="app_name">Data Penduduk</string>
 
     <string name="login_title">Login to Your Account</string>
-    <string name="login_desc">Welcome back! Please sign in to continue using Learnify.</string>
+    <string name="login_desc">Welcome back! Please sign in to continue using Data Penduduk.</string>
     <string name="username">Username</string>
     <string name="username_hint">Enter your username</string>
     <string name="password">Password</string>

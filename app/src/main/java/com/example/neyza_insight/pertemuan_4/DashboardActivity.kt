@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.neyza_insight.databinding.ActivityDashboardBinding
 import com.example.neyza_insight.pertemuan_2.MainActivity
 import com.example.neyza_insight.pertemuan_3.LoginActivity
-import com.example.neyza_insight.pertemuan_4.CategoryActivity
+import com.example.neyza_insight.pertemuan_5.WebViewActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,7 +22,9 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val username = intent.getStringExtra("USERNAME") ?: "User"
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val username = sharedPref.getString("username", "User") ?: "User"
+
         val pageTitle = "Welcome $username!"
         val pageDesc = "Siap belajar hari ini?"
 
@@ -40,11 +42,9 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, CategoryActivity::class.java)
             intent.putExtra("page_title", pageTitle)
             intent.putExtra("page_desc", pageDesc)
-
             intent.putExtra("name", "Neyza")
             intent.putExtra("from", "Pekanbaru")
             intent.putExtra("age", 20)
-
             startActivity(intent)
         }
 
@@ -52,11 +52,14 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, FavoriteActivity::class.java)
             intent.putExtra("page_title", pageTitle)
             intent.putExtra("page_desc", pageDesc)
-
             intent.putExtra("name", "Neyza")
             intent.putExtra("from", "Pekanbaru")
             intent.putExtra("age", 20)
+            startActivity(intent)
+        }
 
+        binding.btnWebView.setOnClickListener {
+            val intent = Intent(this, WebViewActivity::class.java)
             startActivity(intent)
         }
 
@@ -65,6 +68,10 @@ class DashboardActivity : AppCompatActivity() {
                 .setTitle("Konfirmasi")
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { dialog, _ ->
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+
                     dialog.dismiss()
                     Log.e("Info Dialog", "Anda memilih Ya!")
 
@@ -75,7 +82,6 @@ class DashboardActivity : AppCompatActivity() {
                 .setNegativeButton("Batal") { dialog, _ ->
                     dialog.dismiss()
                     Log.e("Info Dialog", "Anda memilih Tidak!")
-
                     Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
                 }
                 .show()

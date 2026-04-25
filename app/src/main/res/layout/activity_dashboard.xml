@@ -1,183 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light">
+    android:background="@color/scholar_blue"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/tvEmoji"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="68dp"
-        android:text="✨"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="24dp">
 
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/urbanist_bold"
-        android:text="@string/dashboard_welcome_preview"
-        android:textColor="@color/text_dark"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@id/btnLogout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmoji" />
+        <ImageView
+            android:id="@+id/imgLogoTop"
+            android:layout_width="162dp"
+            android:layout_height="91dp"
+            android:layout_marginTop="44dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitStart"
+            android:src="@drawable/logo_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvDesc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/urbanist_medium"
-        android:text="@string/dashboard_desc"
-        android:textColor="@color/text_secondary"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            android:layout_width="120dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/urbanist_semibold"
+            android:text="@string/logout"
+            android:textAllCaps="false"
+            android:textColor="@color/scholar_blue"
+            android:textSize="13sp"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="20dp"
+            app:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/scholar_soft" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/urbanist_semibold"
-        android:text="@string/logout"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/primary_blue"
-        app:cornerRadius="20dp"
-        app:elevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/primary_blue_soft"
-        app:strokeColor="@color/stroke_blue"
-        app:strokeWidth="1dp" />
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/urbanist_bold"
+            android:text="@string/dashboard_welcome_preview"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgLogoTop" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mainContentCard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="24dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDesc">
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/urbanist_medium"
+            android:text="@string/dashboard_desc"
+            android:textColor="@color/scholar_light_blue_text_2"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="437dp"
-            android:padding="20dp">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHighlight"
+            android:layout_width="0dp"
+            android:layout_height="112dp"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="@color/scholar_dark_blue"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDesc">
 
-            <ImageView
-                android:id="@+id/imgLogo"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="50dp"
-                android:alpha="0.95"
-                android:contentDescription="@string/app_name"
-                android:scaleType="fitCenter"
-                android:src="@drawable/logo_learnify"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="18dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardRumus"
-                android:layout_width="0dp"
-                android:layout_height="84dp"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/primary_blue_soft"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgLogo">
+                <TextView
+                    android:id="@+id/tvHighlightSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:letterSpacing="0.12"
+                    android:text="AKSES CEPAT"
+                    android:textColor="@color/scholar_light_blue_text"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvHighlightTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:text="Pilih Fitur Favoritmu"
+                    android:textColor="@color/white"
+                    android:textSize="21sp"
+                    app:layout_constraintEnd_toStartOf="@id/tvHighlightEmoji"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvHighlightSmall" />
+
+                <TextView
+                    android:id="@+id/tvHighlightEmoji"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:gravity="center"
+                    android:text="✨"
+                    android:textSize="32sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardHighlight">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/tvMenuTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:text="Pilih Menu"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnRumusRuang"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/urbanist_semibold"
                     android:text="@string/btn_rumus_ruang"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_dark"
-                    android:textSize="18sp" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardCategory"
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="10dp"
-                app:cardBackgroundColor="@color/primary_blue_soft"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="8dp"
-                app:layout_constraintEnd_toStartOf="@id/cardFavorite"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardRumus">
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="18dp"
+                    app:elevation="3dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/btnCategory"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMenuTitle"
+                    app:rippleColor="@color/teal_200" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="18dp"
                     android:fontFamily="@font/urbanist_semibold"
-                    android:padding="16dp"
                     android:text="@string/btn_custom_1"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_dark"
-                    android:textSize="18sp" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardFavorite"
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="8dp"
-                app:cardBackgroundColor="@color/primary_blue_soft"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cardCategory"
-                app:layout_constraintTop_toBottomOf="@id/cardRumus">
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="18dp"
+                    app:elevation="3dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnRumusRuang"
+                    app:layout_constraintTop_toBottomOf="@id/tvMenuTitle"
+                    app:rippleColor="@color/teal_200" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFavorite"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/urbanist_semibold"
-                    android:padding="16dp"
                     android:text="@string/btn_custom_2"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_dark"
-                    android:textSize="18sp" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="18dp"
+                    app:elevation="3dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/btnWebView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnRumusRuang"
+                    app:rippleColor="@color/teal_200" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnWebView"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:text="Web View"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/scholar_dark_blue"
+                    app:cornerRadius="18dp"
+                    app:elevation="4dp"
+                    app:iconGravity="textEnd"
+                    app:icon="@drawable/outline_arrow_back_24"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnFavorite"
+                    app:layout_constraintTop_toBottomOf="@id/btnCategory"
+                    app:rippleColor="@color/teal_200" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -15,6 +15,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
         binding.btnLogin.setOnClickListener {
             val username = binding.etUsername.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
@@ -31,10 +33,12 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Toast 1
-            Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
+            val editor = sharedPref.edit()
+            editor.putBoolean("isLogin", true)
+            editor.putString("username", username)
+            editor.apply()
 
-            // Toast 2 (Welcome User)
+            Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
             Toast.makeText(this, "Welcome $username!", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, DashboardActivity::class.java)
