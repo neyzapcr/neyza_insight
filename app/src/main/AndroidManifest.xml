@@ -14,22 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeyzaInsight">
         <activity
-            android:name=".pertemuan_5.WebViewActivity"
+            android:name=".BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_3.LoginActivity"
+            android:name=".Home.pertemuan_5.WebViewActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_4.FavoriteActivity"
+            android:name=".Home.pertemuan_3.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_4.CategoryActivity"
+            android:name=".Home.pertemuan_4.FavoriteActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_4.DashboardActivity"
+            android:name=".Home.pertemuan_4.CategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_3.WelcomeActivity"
+            android:name=".Home.pertemuan_4.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan_3.WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
@@ -41,13 +44,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".pertemuan_2.BalokActivity"
+            android:name=".Home.pertemuan_2.BalokActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_2.PersegiPanjangActivity"
+            android:name=".Home.pertemuan_2.PersegiPanjangActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_2.MainActivity"
+            android:name=".Home.pertemuan_2.MainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

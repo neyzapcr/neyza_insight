@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.neyza_insight.pertemuan_3.LoginActivity
-import com.example.neyza_insight.pertemuan_4.DashboardActivity
+import com.example.neyza_insight.Home.pertemuan_3.LoginActivity
+import com.example.neyza_insight.Home.pertemuan_4.DashboardActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.jvm.java
@@ -23,7 +23,7 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2000)
 
             val intent = if (isLogin) {
-                Intent(this@SplashScreenActivity, DashboardActivity::class.java)
+                Intent(this@SplashScreenActivity, BaseActivity::class.java)
             } else {
                 Intent(this@SplashScreenActivity, LoginActivity::class.java)
             }

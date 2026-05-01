@@ -70,4 +70,20 @@
     <string name="course_7_name">🌐 Frontend Dev Basics</string>
     <string name="course_7_category">Programming</string>
     <string name="course_7_rating">⭐ 4.7</string>
+    <!-- ====== GLOBAL TEXT (dipakai banyak halaman) ====== -->
+    <string name="app_section_title">Layanan Data</string>
+    <string name="app_section_desc">Pilih fitur untuk melihat informasi.</string>
+
+    <string name="label_population">Penduduk</string>
+    <string name="label_family">Keluarga</string>
+    <string name="label_area">Dusun</string>
+
+    <string name="label_total">Total</string>
+    <string name="label_data">Data</string>
+
+    <string name="title_information">Informasi</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_about">Tentang</string>
+
+    <string name="desc_general">Kelola dan lihat data dengan mudah dan cepat.</string>
 </resources>

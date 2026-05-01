@@ -1,5 +1,6 @@
-package com.example.neyza_insight.pertemuan_5
+package com.example.neyza_insight.Home.pertemuan_5
 
+import android.R
 import android.os.Bundle
 import android.view.MenuItem
 import android.webkit.WebViewClient
@@ -37,7 +38,7 @@ class WebViewActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            android.R.id.home -> {
+            R.id.home -> {
                 finish()
                 true
             }

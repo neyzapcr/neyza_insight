@@ -1,4 +1,4 @@
-package com.example.neyza_insight.pertemuan_2
+package com.example.neyza_insight.Home.pertemuan_2
 
 import android.os.Bundle
 import android.widget.Button

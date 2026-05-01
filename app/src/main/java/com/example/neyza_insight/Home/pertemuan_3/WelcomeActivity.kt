@@ -1,4 +1,4 @@
-package com.example.neyza_insight.pertemuan_3
+package com.example.neyza_insight.Home.pertemuan_3
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

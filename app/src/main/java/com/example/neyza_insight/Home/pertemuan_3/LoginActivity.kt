@@ -1,11 +1,12 @@
-package com.example.neyza_insight.pertemuan_3
+package com.example.neyza_insight.Home.pertemuan_3
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.neyza_insight.BaseActivity
 import com.example.neyza_insight.databinding.ActivityLoginBinding
-import com.example.neyza_insight.pertemuan_4.DashboardActivity
+import com.example.neyza_insight.Home.pertemuan_4.DashboardActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -41,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
             Toast.makeText(this, "Welcome $username!", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, BaseActivity::class.java)
             intent.putExtra("USERNAME", username)
             startActivity(intent)
             finish()

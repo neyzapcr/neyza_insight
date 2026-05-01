@@ -1,8 +1,7 @@
-package com.example.neyza_insight.pertemuan_2
+package com.example.neyza_insight.Home.pertemuan_2
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity

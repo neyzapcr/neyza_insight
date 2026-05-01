@@ -235,7 +235,7 @@
                     app:cornerRadius="18dp"
                     app:elevation="4dp"
                     app:iconGravity="textEnd"
-                    app:icon="@drawable/outline_arrow_back_24"
+                    app:icon="@drawable/ic_back"
                     app:iconPadding="8dp"
                     app:iconTint="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"

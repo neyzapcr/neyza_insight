@@ -1,13 +1,13 @@
-package com.example.neyza_insight.pertemuan_4
+package com.example.neyza_insight.Home.pertemuan_4
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.neyza_insight.databinding.ActivityDashboardBinding
-import com.example.neyza_insight.pertemuan_2.MainActivity
-import com.example.neyza_insight.pertemuan_3.LoginActivity
-import com.example.neyza_insight.pertemuan_5.WebViewActivity
+import com.example.neyza_insight.Home.pertemuan_2.MainActivity
+import com.example.neyza_insight.Home.pertemuan_3.LoginActivity
+import com.example.neyza_insight.Home.pertemuan_5.WebViewActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
