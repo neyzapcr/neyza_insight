@@ -26,7 +26,6 @@ class WebViewActivity : AppCompatActivity() {
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.loadUrl("https://neyza-kependudukan.alwaysdata.net/")
 
-        // Toolbar hide/show saat scroll
         binding.webView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
             if (scrollY > oldScrollY) {
                 binding.appBar.setExpanded(false, true)
