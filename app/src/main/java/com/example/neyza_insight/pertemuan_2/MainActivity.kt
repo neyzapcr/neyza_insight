@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         val desc = intent.getStringExtra("page_desc") ?: "Siap belajar hari ini?"
 
         btnBack.setOnClickListener {
-            finish() // balik ke Dashboard
+            finish()
         }
 
         btnPersegi.setOnClickListener {
