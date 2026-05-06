@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeyzaInsight">
         <activity
+            android:name=".Home.pertemuan_3.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".BaseActivity"
             android:exported="false" />
         <activity
