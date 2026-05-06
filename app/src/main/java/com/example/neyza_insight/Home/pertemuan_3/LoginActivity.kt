@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        // ke register
+        // 👉 pindah ke register
         binding.tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
@@ -28,38 +28,30 @@ class LoginActivity : AppCompatActivity() {
             val username = binding.etUsername.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
 
-            // VALIDASI INPUT KOSONG
+            // VALIDASI
             if (username.isEmpty()) {
-                binding.etUsername.error = "Wajib"
+                binding.etUsername.error = "Username wajib diisi"
                 return@setOnClickListener
             }
 
             if (password.isEmpty()) {
-                binding.etPassword.error = "Wajib"
+                binding.etPassword.error = "Password wajib diisi"
                 return@setOnClickListener
             }
 
-            val savedUsername = sharedPref.getString("username", null)
-            val savedPassword = sharedPref.getString("password", null)
+            val savedUsername = sharedPref.getString("username", "")
+            val savedPassword = sharedPref.getString("password", "")
 
-            // CEK BELUM REGISTER
-            if (savedUsername.isNullOrEmpty() || savedPassword.isNullOrEmpty()) {
-                Toast.makeText(this, "Belum register akun", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            // RULE LOGIN (SESUAI SOAL)
-            val loginValid =
-                (username == password) ||
-                        (username == savedUsername && password == savedPassword)
-
-            if (loginValid) {
+            // RULE LOGIN
+            if (username == password || (username == savedUsername && password == savedPassword)) {
 
                 sharedPref.edit().putBoolean("isLogin", true).apply()
 
                 Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
 
-                startActivity(Intent(this, BaseActivity::class.java))
+                val intent = Intent(this, BaseActivity::class.java)
+                intent.putExtra("USERNAME", username)
+                startActivity(intent)
                 finish()
 
             } else {
