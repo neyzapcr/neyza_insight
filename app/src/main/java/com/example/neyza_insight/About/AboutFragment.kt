@@ -19,7 +19,6 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = "About"
         }
-
         binding.aboutContainer.alpha = 0f
         binding.aboutContainer.translationY = 80f
         binding.aboutContainer.animate()
