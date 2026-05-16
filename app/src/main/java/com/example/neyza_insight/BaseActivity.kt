@@ -7,6 +7,7 @@ import com.example.neyza_insight.About.AboutFragment
 import com.example.neyza_insight.Home.HomeFragment
 import com.example.neyza_insight.Profile.ProfileFragment
 import com.example.neyza_insight.R
+import com.example.neyza_insight.Selengkapnya.SelengkapnyaFragment
 import com.example.neyza_insight.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
@@ -26,17 +27,18 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(HomeFragment())
                     true
                 }
-
                 R.id.nav_about -> {
                     replaceFragment(AboutFragment())
                     true
                 }
-
                 R.id.nav_profile -> {
                     replaceFragment(ProfileFragment())
                     true
                 }
-
+                R.id.nav_selengkapnya -> {
+                    replaceFragment(SelengkapnyaFragment())
+                    true
+                }
                 else -> false
             }
         }

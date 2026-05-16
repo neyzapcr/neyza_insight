@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="3dp"
+    app:strokeColor="@color/scholar_border"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="14dp">
+
+        <!-- Avatar -->
+        <TextView
+            android:id="@+id/tvAvatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_circle_icon"
+            android:gravity="center"
+            android:fontFamily="@font/urbanist_bold"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Nama -->
+        <TextView
+            android:id="@+id/tvNama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:fontFamily="@font/urbanist_bold"
+            android:textColor="@color/text_dark"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@id/tvBadgeJK"
+            app:layout_constraintStart_toEndOf="@id/tvAvatar"
+            app:layout_constraintTop_toTopOf="@id/tvAvatar" />
+
+        <!-- Badge JK -->
+        <TextView
+            android:id="@+id/tvBadgeJK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge"
+            android:fontFamily="@font/urbanist_semibold"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/scholar_blue"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvAvatar" />
+
+        <!-- NIK -->
+        <TextView
+            android:id="@+id/tvNik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/urbanist_medium"
+            android:textColor="@color/scholar_text_muted"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvAvatar"
+            app:layout_constraintTop_toBottomOf="@id/tvNama" />
+
+        <!-- Divider -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:background="@color/scholar_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAvatar" />
+
+        <!-- Agama kiri -->
+        <TextView
+            android:id="@+id/tvAgama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/urbanist_medium"
+            android:textColor="@color/scholar_text_secondary"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/tvPekerjaan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <!-- Pekerjaan kanan — badge biru -->
+        <TextView
+            android:id="@+id/tvPekerjaan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_badge"
+            android:fontFamily="@font/urbanist_semibold"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/scholar_blue"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <!-- No Telp -->
+        <TextView
+            android:id="@+id/tvNoTelp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/urbanist_medium"
+            android:textColor="@color/scholar_text_secondary"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAgama" />
+
+        <!-- Alamat -->
+        <TextView
+            android:id="@+id/tvAlamat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/urbanist_medium"
+            android:maxLines="1"
+            android:textColor="@color/scholar_text_muted"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNoTelp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

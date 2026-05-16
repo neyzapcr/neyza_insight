@@ -13,6 +13,7 @@ import com.example.neyza_insight.Home.pertemuan_3.LoginActivity
 import com.example.neyza_insight.Home.pertemuan_4.CategoryActivity
 import com.example.neyza_insight.Home.pertemuan_4.FavoriteActivity
 import com.example.neyza_insight.Home.pertemuan_5.WebViewActivity
+import com.example.neyza_insight.Home.pertemuan_9.DataWargaActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -66,12 +67,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             startActivity(intent)
         }
 
+        binding.btnDataWarga.setOnClickListener {
+            val intent = Intent(requireContext(), DataWargaActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnLogout.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Konfirmasi")
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { dialog, _ ->
-                    sharedPref.edit().clear().apply()
+                    // Hanya hapus status login, username & password tetap tersimpan
+                    // agar user bisa login lagi tanpa perlu register ulang
+                    sharedPref.edit().putBoolean("isLogin", false).apply()
                     dialog.dismiss()
 
                     val intent = Intent(requireContext(), LoginActivity::class.java)

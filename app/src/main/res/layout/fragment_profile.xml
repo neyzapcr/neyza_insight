@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#EEF8FF">
 
-    <!-- Background -->
+    <!-- Background curve biru -->
     <View
         android:id="@+id/bgBlue"
         android:layout_width="489dp"
@@ -110,7 +110,7 @@
         app:layout_constraintStart_toEndOf="@id/imgProfile"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 🔥 ABOUT CARD BESAR -->
+    <!-- About Me Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardAboutMe"
         android:layout_width="0dp"
@@ -131,7 +131,6 @@
             android:orientation="vertical"
             android:padding="22dp">
 
-            <!-- Title -->
             <TextView
                 android:id="@+id/tvAboutMe"
                 android:layout_width="match_parent"
@@ -141,14 +140,12 @@
                 android:textSize="22sp"
                 android:fontFamily="@font/urbanist_bold"/>
 
-            <!-- Divider -->
             <View
                 android:layout_width="40dp"
                 android:layout_height="4dp"
                 android:layout_marginTop="6dp"
                 android:background="@color/scholar_blue"/>
 
-            <!-- Description -->
             <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
@@ -161,7 +158,6 @@
                 android:lineSpacingExtra="4dp"
                 android:fontFamily="@font/urbanist_medium"/>
 
-            <!-- Skills -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

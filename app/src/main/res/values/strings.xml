@@ -86,4 +86,6 @@
     <string name="title_about">Tentang</string>
 
     <string name="desc_general">Kelola dan lihat data dengan mudah dan cepat.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
