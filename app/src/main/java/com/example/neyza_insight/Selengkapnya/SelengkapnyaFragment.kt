@@ -47,7 +47,7 @@ class SelengkapnyaFragment : Fragment(R.layout.fragment_selengkapnya) {
         MenuModel(
             iconRes   = R.drawable.ic_menu_versi,
             judul     = "Versi Aplikasi",
-            deskripsi = "Bina Desa v1.0.0 — Build 2024"
+            deskripsi = "Bina Desa v1.0.0 — Build 2026"
         )
     )
 
