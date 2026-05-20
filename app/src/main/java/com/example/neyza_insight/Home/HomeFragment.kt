@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.neyza_insight.Home.pertemuan_10.DataPeristiwaActivity
 import com.example.neyza_insight.R
 import com.example.neyza_insight.databinding.FragmentHomeBinding
 import com.example.neyza_insight.Home.pertemuan_2.MainActivity
@@ -71,6 +72,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val intent = Intent(requireContext(), DataWargaActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnDataPeristiwa.setOnClickListener {
+            val intent = Intent(requireContext(), DataPeristiwaActivity::class.java)
+            startActivity(intent)
+        }
+
 
         binding.btnLogout.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())

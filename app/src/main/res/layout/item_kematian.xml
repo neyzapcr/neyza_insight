@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/scholar_blue"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toStartOf="@id/imgDokumen"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/tvNamaKematian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Almarhum"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvNoSuratKematian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No. Surat Kematian: -"
+                    android:textColor="#CCFFFFFF"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textSize="12sp"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgDokumen"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:background="#33FFFFFF"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Info Kematian"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="6dp"/>
+                <TextView
+                    android:id="@+id/tvTglMeninggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textColor="#555555"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tvLokasiMeninggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lokasi"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textColor="#555555"
+                    android:textSize="12sp"
+                    android:layout_marginTop="2dp"/>
+                <TextView
+                    android:id="@+id/tvSebabKematian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sebab"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textColor="#555555"
+                    android:textSize="12sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Diri"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="6dp"/>
+                <TextView
+                    android:id="@+id/tvNikKematian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NIK"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textColor="#555555"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tvAlamatKematian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat Terakhir"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textColor="#555555"
+                    android:textSize="12sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

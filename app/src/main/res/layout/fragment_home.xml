@@ -415,19 +415,38 @@
                         android:layout_width="0dp"
                         android:layout_height="58dp"
                         android:layout_marginTop="12dp"
-                        android:fontFamily="@font/urbanist_bold"
+                        android:layout_marginEnd="7dp"
+                        android:fontFamily="@font/urbanist_semibold"
                         android:text="👥 Data Warga"
-                        android:textStyle="bold"
                         app:rippleColor="@color/scholar_dark_blue"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         app:backgroundTint="@color/scholar_blue"
                         app:cornerRadius="16dp"
-                        app:elevation="2dp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:elevation="0dp"
+                        app:layout_constraintEnd_toStartOf="@id/btnDataPeristiwa"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/btnFavorite" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDataPeristiwa"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/urbanist_semibold"
+                        android:text="📅 Data Peristiwa"
+                        app:rippleColor="@color/scholar_dark_blue"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/scholar_blue"
+                        app:cornerRadius="16dp"
+                        app:elevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/btnDataWarga"
+                        app:layout_constraintTop_toBottomOf="@id/btnWebView" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
