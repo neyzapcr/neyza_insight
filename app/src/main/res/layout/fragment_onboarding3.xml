@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:padding="24dp">
+
+    <!-- Frosted Glassmorphism Card Frame for Illustration -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardIllustration"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#0FFFFFFF"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#1FFFFFFF"
+        app:strokeWidth="1.5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgIllustration"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:contentDescription="Illustration"
+            android:scaleType="fitCenter"
+            android:src="@drawable/programming" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Typography Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/urbanist_bold"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:text="Pengelolaan Data Kependudukan Berbasis Digital"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardIllustration" />
+
+    <!-- Typography Description -->
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/urbanist_medium"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.25"
+        android:letterSpacing="0.02"
+        android:text="Mendukung pelayanan publik desa yang tertib, transparan, dan terintegrasi."
+        android:textColor="@color/scholar_light_blue_text_2"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

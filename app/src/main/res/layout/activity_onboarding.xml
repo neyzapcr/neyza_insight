@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_onboarding_gradient"
+    tools:context=".Onboarding.OnboardingActivity">
+
+    <!-- Top Header Area with Horizontal Logo -->
+    <ImageView
+        android:id="@+id/logoHorizontal"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Logo Horizontal"
+        android:scaleType="fitStart"
+        android:src="@drawable/logo_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Top Skip / Lewati Button (Aligned to Top Right) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSkip"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/urbanist_semibold"
+        android:text="Lewati"
+        android:textColor="@color/scholar_light_blue_text_2"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/logoHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/logoHorizontal" />
+
+    <!-- ViewPager2 for Onboarding Fragments (Takes remaining space between header and navigation section) -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerOnboarding"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoHorizontal" />
+
+    <!-- Centered Bottom Action & Navigation Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navigationContainer"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="190dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Kembali (Back) Button (Aligned to Start/Left edge) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBack"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/urbanist_bold"
+            android:text="Kembali"
+            android:textColor="#CCFFFFFF"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <!-- Dots Indicator (Always Centered) -->
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/dotIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dotsColor="@color/scholar_light_blue_text"
+            app:dotsCornerRadius="6dp"
+            app:dotsSize="10dp"
+            app:dotsSpacing="8dp"
+            app:dotsWidthFactor="2.8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:selectedDotColor="@color/white" />
+
+        <!-- Lanjut / Ayo Mulai (Next) Button (Aligned to End/Right edge, starts as circular arrow) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNext"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:fontFamily="@font/urbanist_bold"
+            android:textAllCaps="false"
+            android:textColor="@color/scholar_dark_blue"
+            android:textSize="14sp"
+            android:padding="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            app:iconSize="18dp"
+            app:iconPadding="0dp"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="22dp"
+            app:elevation="6dp"
+            app:icon="@drawable/ic_arrow_forward"
+            app:iconTint="@color/scholar_dark_blue"
+            app:iconGravity="textStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/primary_blue_soft" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

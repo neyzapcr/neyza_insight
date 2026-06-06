@@ -1,457 +1,471 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toolbarArea"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:contentDescription="@null"
-            android:scaleType="fitXY"
-            android:src="@drawable/bg_toolbar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/transparent"
-            android:title="Home"
-            android:titleTextColor="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:titleCentered="true" />
-
-        <ImageView
-            android:id="@+id/imgLogoTop"
-            android:layout_width="145dp"
-            android:layout_height="72dp"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="4dp"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitStart"
-            android:src="@drawable/logo_horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout"
-            android:layout_width="110dp"
-            android:layout_height="43dp"
-            android:layout_marginEnd="22dp"
-            android:fontFamily="@font/urbanist_semibold"
-            android:text="@string/logout"
-            android:textAllCaps="false"
-            android:textColor="@color/scholar_blue"
-            android:textSize="13sp"
-            app:backgroundTint="@color/white"
-            app:cornerRadius="22dp"
-            app:elevation="4dp"
-            app:layout_constraintBottom_toBottomOf="@id/imgLogoTop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/imgLogoTop" />
-
-        <TextView
-            android:id="@+id/tvWelcome"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="22dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/urbanist_bold"
-            android:text="@string/dashboard_welcome_preview"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgLogoTop" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/homeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="-40dp"
-        android:fillViewport="true"
-        android:clipToPadding="false"
-        android:clipChildren="false"
-        android:paddingBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarArea">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbarArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardHighlight"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_toolbar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/transparent"
+                android:title="Home"
+                android:titleTextColor="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleCentered="true" />
+
+            <ImageView
+                android:id="@+id/imgLogoTop"
+                android:layout_width="145dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="4dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitStart"
+                android:src="@drawable/logo_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="110dp"
+                android:layout_height="43dp"
+                android:layout_marginEnd="22dp"
+                android:fontFamily="@font/urbanist_semibold"
+                android:text="@string/logout"
+                android:textAllCaps="false"
+                android:textColor="@color/scholar_blue"
+                android:textSize="13sp"
+                app:backgroundTint="@color/white"
+                app:cornerRadius="22dp"
+                app:elevation="4dp"
+                app:layout_constraintBottom_toBottomOf="@id/imgLogoTop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imgLogoTop" />
+
+            <TextView
+                android:id="@+id/tvWelcome"
                 android:layout_width="0dp"
-                android:layout_height="135dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="-10dp"
-                app:cardBackgroundColor="@color/scholar_dark_blue"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="22dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="@string/dashboard_welcome_preview"
+                android:textColor="@color/white"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/imgLogoTop" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHighlight"
+            android:layout_width="0dp"
+            android:layout_height="135dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="-80dp"
+            app:cardBackgroundColor="@color/scholar_dark_blue"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarArea">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tvHighlightSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:letterSpacing="0.12"
+                    android:text="SISTEM KEPENDUDUKAN"
+                    android:textColor="@color/scholar_light_blue_text"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvHighlightTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:text="Sistem Data Penduduk Desa"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    app:layout_constraintEnd_toStartOf="@id/tvHighlightEmoji"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvHighlightSmall" />
+
+                <TextView
+                    android:id="@+id/tvHighlightDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:text="Platform Digital untuk mengelola informasi kependudukan secara akurat."
+                    android:textColor="@color/scholar_light_blue_text_2"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@id/tvHighlightEmoji"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvHighlightTitle" />
+
+                <TextView
+                    android:id="@+id/tvHighlightEmoji"
+                    android:layout_width="67dp"
+                    android:layout_height="63dp"
+                    android:gravity="center"
+                    android:text="🏘️"
+                    android:textSize="38sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/statContainer"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardHighlight">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/scholar_soft_2"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/scholar_border"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="20dp">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvHighlightSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/urbanist_bold"
-                        android:letterSpacing="0.12"
-                        android:text="SISTEM KEPENDUDUKAN"
-                        android:textColor="@color/scholar_light_blue_text"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:text="2.874"
+                        android:textColor="@color/scholar_blue"
+                        android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/tvHighlightTitle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/urbanist_bold"
-                        android:text="Sistem Data Penduduk Desa"
-                        android:textColor="@color/white"
-                        android:textSize="17sp"
-                        app:layout_constraintEnd_toStartOf="@id/tvHighlightEmoji"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvHighlightSmall" />
-
-                    <TextView
-                        android:id="@+id/tvHighlightDesc"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
                         android:fontFamily="@font/urbanist_medium"
-                        android:text="Platform Digital untuk mengelola informasi kependudukan secara akurat."
-                        android:textColor="@color/scholar_light_blue_text_2"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@id/tvHighlightEmoji"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvHighlightTitle" />
-
-                    <TextView
-                        android:id="@+id/tvHighlightEmoji"
-                        android:layout_width="67dp"
-                        android:layout_height="63dp"
-                        android:gravity="center"
-                        android:text="🏘️"
-                        android:textSize="38sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:text="Warga"
+                        android:textColor="@color/scholar_text_muted"
+                        android:textSize="12sp" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <LinearLayout
-                android:id="@+id/statContainer"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:weightSum="3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardHighlight">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="6dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/scholar_soft_2"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="2dp"
-                    app:strokeColor="@color/scholar_border"
-                    app:strokeWidth="1dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/urbanist_bold"
-                            android:text="2.874"
-                            android:textColor="@color/scholar_blue"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/urbanist_medium"
-                            android:text="Warga"
-                            android:textColor="@color/scholar_text_muted"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="6dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/scholar_soft_2"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="2dp"
-                    app:strokeColor="@color/scholar_border"
-                    app:strokeWidth="1dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/urbanist_bold"
-                            android:text="812"
-                            android:textColor="@color/scholar_blue"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/urbanist_medium"
-                            android:text="Keluarga"
-                            android:textColor="@color/scholar_text_muted"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="6dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/scholar_soft_2"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="2dp"
-                    app:strokeColor="@color/scholar_border"
-                    app:strokeWidth="1dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/urbanist_bold"
-                            android:text="4"
-                            android:textColor="@color/scholar_blue"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/urbanist_medium"
-                            android:text="Kelahiran"
-                            android:textColor="@color/scholar_text_muted"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardMenu"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statContainer">
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/scholar_soft_2"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/scholar_border"
+                app:strokeWidth="1dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="20dp">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvMenuTitle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/urbanist_bold"
-                        android:text="Layanan Data Desa"
-                        android:textColor="@color/text_dark"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:text="812"
+                        android:textColor="@color/scholar_blue"
+                        android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/tvMenuSubtitle"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/urbanist_medium"
-                        android:text="Pilih menu untuk mengakses informasi."
+                        android:text="Keluarga"
                         android:textColor="@color/scholar_text_muted"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvMenuTitle" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnRumusRuang"
-                        android:layout_width="0dp"
-                        android:layout_height="58dp"
-                        android:layout_marginTop="18dp"
-                        android:layout_marginEnd="7dp"
-                        app:rippleColor="@color/scholar_dark_blue"
-                        android:fontFamily="@font/urbanist_semibold"
-                        android:text="@string/btn_rumus_ruang"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        app:backgroundTint="@color/scholar_blue"
-                        app:cornerRadius="16dp"
-                        app:elevation="0dp"
-                        app:layout_constraintEnd_toStartOf="@id/btnCategory"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvMenuSubtitle" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnCategory"
-                        android:layout_width="0dp"
-                        android:layout_height="58dp"
-                        android:layout_marginStart="7dp"
-                        android:layout_marginTop="18dp"
-                        app:rippleColor="@color/scholar_dark_blue"
-                        android:fontFamily="@font/urbanist_semibold"
-                        android:text="@string/btn_custom_1"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        app:backgroundTint="@color/scholar_blue"
-                        app:cornerRadius="16dp"
-                        app:elevation="0dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btnRumusRuang"
-                        app:layout_constraintTop_toBottomOf="@id/tvMenuSubtitle" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnFavorite"
-                        android:layout_width="0dp"
-                        android:layout_height="58dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="7dp"
-                        android:fontFamily="@font/urbanist_semibold"
-                        android:text="@string/btn_custom_2"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        app:backgroundTint="@color/scholar_blue"
-                        app:cornerRadius="16dp"
-                        app:elevation="0dp"
-                        app:layout_constraintEnd_toStartOf="@id/btnWebView"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/btnRumusRuang"
-                        app:rippleColor="@color/scholar_dark_blue" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnWebView"
-                        android:layout_width="0dp"
-                        android:layout_height="58dp"
-                        android:layout_marginStart="7dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/urbanist_semibold"
-                        android:text="Web View"
-                        app:rippleColor="@color/scholar_dark_blue"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        app:backgroundTint="@color/scholar_blue"
-                        app:cornerRadius="16dp"
-                        app:elevation="0dp"
-                        app:icon="@drawable/ic_back"
-                        app:iconGravity="end"
-                        app:iconPadding="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btnFavorite"
-                        app:layout_constraintTop_toBottomOf="@id/btnCategory" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnDataWarga"
-                        android:layout_width="0dp"
-                        android:layout_height="58dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="7dp"
-                        android:fontFamily="@font/urbanist_semibold"
-                        android:text="👥 Data Warga"
-                        app:rippleColor="@color/scholar_dark_blue"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        app:backgroundTint="@color/scholar_blue"
-                        app:cornerRadius="16dp"
-                        app:elevation="0dp"
-                        app:layout_constraintEnd_toStartOf="@id/btnDataPeristiwa"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/btnFavorite" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnDataPeristiwa"
-                        android:layout_width="0dp"
-                        android:layout_height="58dp"
-                        android:layout_marginStart="7dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/urbanist_semibold"
-                        android:text="📅 Data Peristiwa"
-                        app:rippleColor="@color/scholar_dark_blue"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        app:backgroundTint="@color/scholar_blue"
-                        app:cornerRadius="16dp"
-                        app:elevation="0dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btnDataWarga"
-                        app:layout_constraintTop_toBottomOf="@id/btnWebView" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:textSize="12sp" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/scholar_soft_2"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/scholar_border"
+                app:strokeWidth="1dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/urbanist_bold"
+                        android:text="4"
+                        android:textColor="@color/scholar_blue"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/urbanist_medium"
+                        android:text="Kelahiran"
+                        android:textColor="@color/scholar_text_muted"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statContainer">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tvMenuTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:text="Layanan Data Desa"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvMenuSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:text="Pilih menu untuk mengakses informasi."
+                    android:textColor="@color/scholar_text_muted"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMenuTitle" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRumusRuang"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="7dp"
+                    app:rippleColor="@color/scholar_dark_blue"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:text="@string/btn_rumus_ruang"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="16dp"
+                    app:elevation="0dp"
+                    app:layout_constraintEnd_toStartOf="@id/btnCategory"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMenuSubtitle" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="18dp"
+                    app:rippleColor="@color/scholar_dark_blue"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:text="@string/btn_custom_1"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="16dp"
+                    app:elevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnRumusRuang"
+                    app:layout_constraintTop_toBottomOf="@id/tvMenuSubtitle" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFavorite"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="7dp"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:text="@string/btn_custom_2"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="16dp"
+                    app:elevation="0dp"
+                    app:layout_constraintEnd_toStartOf="@id/btnWebView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnRumusRuang"
+                    app:rippleColor="@color/scholar_dark_blue" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnWebView"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:text="Web View"
+                    app:rippleColor="@color/scholar_dark_blue"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="16dp"
+                    app:elevation="0dp"
+                    app:icon="@drawable/ic_back"
+                    app:iconGravity="end"
+                    app:iconPadding="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnFavorite"
+                    app:layout_constraintTop_toBottomOf="@id/btnCategory" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDataWarga"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:text="👥 Data Warga"
+                    android:textStyle="bold"
+                    app:rippleColor="@color/scholar_dark_blue"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="16dp"
+                    app:elevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnFavorite" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvNewsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="22dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/urbanist_bold"
+            android:text="Berita Populer"
+            android:textColor="@color/text_dark"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardMenu" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle" />
+
+        <TextView
+            android:id="@+id/tvNewsTitleVertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="22dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/urbanist_bold"
+            android:text="Berita Kependudukan Lainnya"
+            android:textColor="@color/text_dark"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvNews" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNewsVertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="96dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNewsTitleVertical" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
