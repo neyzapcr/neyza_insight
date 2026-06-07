@@ -28,7 +28,7 @@
             android:layout_margin="16dp"
             android:contentDescription="Illustration"
             android:scaleType="fitCenter"
-            android:src="@drawable/digital" />
+            android:src="@drawable/onboarding1" />
 
     </com.google.android.material.card.MaterialCardView>
 
