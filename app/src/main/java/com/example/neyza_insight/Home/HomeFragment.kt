@@ -15,6 +15,7 @@ import com.example.neyza_insight.Home.pertemuan_4.CategoryActivity
 import com.example.neyza_insight.Home.pertemuan_4.FavoriteActivity
 import com.example.neyza_insight.Home.pertemuan_5.WebViewActivity
 import com.example.neyza_insight.Home.pertemuan_9.DataWargaActivity
+import com.example.neyza_insight.Home.pertemuan_10.DataPeristiwaActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import android.widget.Toast
@@ -80,6 +81,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.btnDataWarga.setOnClickListener {
             val intent = Intent(requireContext(), DataWargaActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        binding.btnDataPeristiwa.setOnClickListener {
+            val intent = Intent(requireContext(), DataPeristiwaActivity::class.java)
             startActivity(intent)
         }
 
