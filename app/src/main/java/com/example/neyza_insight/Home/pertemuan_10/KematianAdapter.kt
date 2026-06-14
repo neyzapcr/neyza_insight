@@ -4,10 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.neyza_insight.data.entity.KematianEntity
 import com.example.neyza_insight.databinding.ItemKematianBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class KematianAdapter(private val listKematian: List<KematianModel>) :
-    RecyclerView.Adapter<KematianAdapter.ViewHolder>() {
+class KematianAdapter(
+    private val listKematian: List<KematianEntity>,
+    private val onDeleteClick: (KematianEntity) -> Unit
+) : RecyclerView.Adapter<KematianAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemKematianBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,7 +31,22 @@ class KematianAdapter(private val listKematian: List<KematianModel>) :
             tvNoSuratKematian.text = "No. Surat: ${item.noSurat}"
             tvAlamatKematian.text = "Alamat: ${item.alamat}"
 
-            // 🔥 GLIDE UNTUK MEMUNCULKAN GAMBAR KEMATIAN
+            // Delete action
+            btnDelete.setOnClickListener {
+                MaterialAlertDialogBuilder(holder.itemView.context)
+                    .setTitle("Hapus Data Kematian")
+                    .setMessage("Apakah Anda yakin ingin menghapus data kematian ini?")
+                    .setPositiveButton("Ya") { dialog, _ ->
+                        onDeleteClick(item)
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("Batal") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
+
+            // Glide loader
             Glide.with(holder.itemView.context)
                 .load(item.imageUrl)
                 .placeholder(android.R.color.darker_gray)

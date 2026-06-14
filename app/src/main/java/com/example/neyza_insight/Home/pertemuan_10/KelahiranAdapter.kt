@@ -4,10 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.neyza_insight.data.entity.KelahiranEntity
 import com.example.neyza_insight.databinding.ItemKelahiranBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class KelahiranAdapter(
-    private val listKelahiran: List<KelahiranModel>
+    private val listKelahiran: List<KelahiranEntity>,
+    private val onDeleteClick: (KelahiranEntity) -> Unit
 ) : RecyclerView.Adapter<KelahiranAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemKelahiranBinding) : RecyclerView.ViewHolder(binding.root)
@@ -27,7 +30,22 @@ class KelahiranAdapter(
             tvNamaAyah.text = "Nama Ayah: ${data.namaAyah}"
             tvNamaIbu.text = "Nama Ibu: ${data.namaIbu}"
 
-            // 🔥 GLIDE UNTUK MEMUNCULKAN GAMBAR KELAHIRAN
+            // Delete action
+            btnDelete.setOnClickListener {
+                MaterialAlertDialogBuilder(holder.itemView.context)
+                    .setTitle("Hapus Data Kelahiran")
+                    .setMessage("Apakah Anda yakin ingin menghapus data kelahiran ini?")
+                    .setPositiveButton("Ya") { dialog, _ ->
+                        onDeleteClick(data)
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("Batal") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
+
+            // Glide loader
             Glide.with(holder.itemView.context)
                 .load(data.imageUrl)
                 .placeholder(android.R.color.darker_gray)

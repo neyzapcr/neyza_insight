@@ -1,17 +1,25 @@
 package com.example.neyza_insight.Home.pertemuan_10
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.neyza_insight.R
+import com.example.neyza_insight.data.AppDatabase
+import com.example.neyza_insight.data.entity.KematianEntity
 import com.example.neyza_insight.databinding.FragmentTabKematianBinding
+import kotlinx.coroutines.launch
 
 class TabKematianFragment : Fragment() {
     private var _binding: FragmentTabKematianBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var db: AppDatabase
+    private lateinit var adapter: KematianAdapter
+    private val listData = mutableListOf<KematianEntity>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentTabKematianBinding.inflate(inflater, container, false)
@@ -21,343 +29,383 @@ class TabKematianFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listData = listOf(
-            KematianModel(
-                "Gibran Erlangga",
-                "1471020039480",
-                "Laki-laki",
-                "20/03/2026",
-                "RSUD Arifin Achmad",
-                "Sakit Tua",
-                "SKM-92819",
-                "Jl. Sudirman No. 45",
-                "https://randomuser.me/api/portraits/men/31.jpg"
-            ),
-            KematianModel(
-                "Dewi Lestari",
-                "1471092830193",
-                "Perempuan",
-                "02/05/2026",
-                "Rumah Kediaman",
-                "Serangan Jantung",
-                "SKM-10293",
-                "Jl. Panam Blok C",
-                "https://randomuser.me/api/portraits/women/32.jpg"
-            ),
-            KematianModel(
-                "Bambang Sulistyo",
-                "147101020348001",
-                "Laki-laki",
-                "12/01/2026",
-                "RSUD Arifin Achmad",
-                "Stroke",
-                "SKM-92820",
-                "Jl. Tuanku Tambusai No. 12",
-                "https://randomuser.me/api/portraits/men/33.jpg"
-            ),
-            KematianModel(
-                "Siti Rahmah",
-                "147105421093002",
-                "Perempuan",
-                "18/01/2026",
-                "Rumah Kediaman",
-                "Sakit Tua",
-                "SKM-92821",
-                "Jl. Soebrantas Samping Ponpes",
-                "https://randomuser.me/api/portraits/women/34.jpg"
-            ),
-            KematianModel(
-                "Ahmad Hidayat",
-                "147103120572003",
-                "Laki-laki",
-                "02/02/2026",
-                "RS Jiwa Tampan",
-                "Komplikasi",
-                "SKM-92822",
-                "Jl. Suka Karya Gg. Al-Ikhlas",
-                "https://randomuser.me/api/portraits/men/35.jpg"
-            ),
-            KematianModel(
-                "Sri Wahyuni",
-                "147108510663001",
-                "Perempuan",
-                "14/02/2026",
-                "Rumah Kediaman",
-                "Diabetes",
-                "SKM-92823",
-                "Jl. Kartini No. 8B",
-                "https://randomuser.me/api/portraits/women/36.jpg"
-            ),
-            KematianModel(
-                "Joko Widodo",
-                "147102150854002",
-                "Laki-laki",
-                "03/03/2026",
-                "RS Awal Bros",
-                "Gagal Ginjal",
-                "SKM-92824",
-                "Jl. Jenderal Sudirman No. 102",
-                "https://randomuser.me/api/portraits/men/37.jpg"
-            ),
-            KematianModel(
-                "Sumiati",
-                "147109621151004",
-                "Perempuan",
-                "11/03/2026",
-                "Rumah Kediaman",
-                "Asma",
-                "SKM-92825",
-                "Jl. Riau Gang Guru",
-                "https://randomuser.me/api/portraits/women/38.jpg"
-            ),
-            KematianModel(
-                "Hendra Wijaya",
-                "147104050481002",
-                "Laki-laki",
-                "25/03/2026",
-                "Puskesmas Simpang Tiga",
-                "Hipertensi",
-                "SKM-92826",
-                "Jl. Kaharuddin Nasution No. 5",
-                "https://randomuser.me/api/portraits/men/39.jpg"
-            ),
-            KematianModel(
-                "Anisa Fitri",
-                "147107440995001",
-                "Perempuan",
-                "04/04/2026",
-                "RS Sansani",
-                "Demam Berdarah",
-                "SKM-92827",
-                "Jl. Soekarno Hatta Blok M",
-                "https://randomuser.me/api/portraits/women/40.jpg"
-            ),
-            KematianModel(
-                "Rudi Hartono",
-                "147101230773003",
-                "Laki-laki",
-                "15/04/2026",
-                "RSUD Arifin Achmad",
-                "Kanker Paru",
-                "SKM-92828",
-                "Jl. Arifin Achmad No. 22",
-                "https://randomuser.me/api/portraits/men/41.jpg"
-            ),
-            KematianModel(
-                "Kartini",
-                "147106520442001",
-                "Perempuan",
-                "29/04/2026",
-                "Rumah Kediaman",
-                "Sakit Tua",
-                "SKM-92829",
-                "Jl. Melati Indah Gg. Damai",
-                "https://randomuser.me/api/portraits/women/42.jpg"
-            ),
-            KematianModel(
-                "Dedi Setiawan",
-                "147103190885002",
-                "Laki-laki",
-                "06/05/2026",
-                "RS Ibnu Sina",
-                "Asam Lambung Akut",
-                "SKM-92830",
-                "Jl. Ahmad Yani No. 45",
-                "https://randomuser.me/api/portraits/men/43.jpg"
-            ),
-            KematianModel(
-                "Mega Utami",
-                "147105551289001",
-                "Perempuan",
-                "16/05/2026",
-                "Rumah Kediaman",
-                "Kanker Payudara",
-                "SKM-92831",
-                "Jl. Tanjung Datuk No. 14",
-                "https://randomuser.me/api/portraits/women/44.jpg"
-            ),
-            KematianModel(
-                "Mulyono",
-                "147102110260003",
-                "Laki-laki",
-                "28/05/2026",
-                "RSUD Arifin Achmad",
-                "Penyakit Jantung",
-                "SKM-92832",
-                "Jl. Kulim Gg. Baiturrahman",
-                "https://randomuser.me/api/portraits/men/45.jpg"
-            ),
-            KematianModel(
-                "Evi Tamala",
-                "147108420371002",
-                "Perempuan",
-                "05/06/2026",
-                "RS PMC",
-                "Stroke",
-                "SKM-92833",
-                "Jl. Lembaga Permasyarakatan",
-                "https://randomuser.me/api/portraits/women/46.jpg"
-            ),
-            KematianModel(
-                "Budi Santoso",
-                "147101010166005",
-                "Laki-laki",
-                "12/06/2026",
-                "Rumah Kediaman",
-                "Sakit Tua",
-                "SKM-92834",
-                "Jl. Harapan Raya Gg. Sabar",
-                "https://randomuser.me/api/portraits/men/47.jpg"
-            ),
-            KematianModel(
-                "Yulianti",
-                "147106440783001",
-                "Perempuan",
-                "22/06/2026",
-                "RS Petala Bumi",
-                "Infeksi Paru",
-                "SKM-92835",
-                "Jl. Dr. Sutomo No. 71",
-                "https://randomuser.me/api/portraits/women/48.jpg"
-            ),
-            KematianModel(
-                "Andi Permana",
-                "147104121292002",
-                "Laki-laki",
-                "03/07/2026",
-                "RS Aulia",
-                "Kecelakaan Kerja",
-                "SKM-92836",
-                "Jl. Kubang Raya Km 2",
-                "https://randomuser.me/api/portraits/men/49.jpg"
-            ),
-            KematianModel(
-                "Siti Khadijah",
-                "147105610550001",
-                "Perempuan",
-                "14/07/2026",
-                "Rumah Kediaman",
-                "Sakit Tua",
-                "SKM-92837",
-                "Jl. Sekolah No. 9 Rumbai",
-                "https://randomuser.me/api/portraits/women/50.jpg"
-            ),
-            KematianModel(
-                "Fajar Nugraha",
-                "147103250688002",
-                "Laki-laki",
-                "25/07/2026",
-                "RSUD Arifin Achmad",
-                "Gagal Hati",
-                "SKM-92838",
-                "Jl. Paus Gg. Beranti",
-                "https://randomuser.me/api/portraits/men/51.jpg"
-            ),
-            KematianModel(
-                "Diana Lestari",
-                "147109550893003",
-                "Perempuan",
-                "02/08/2026",
-                "RS Eka Hospital",
-                "Leukemia",
-                "SKM-92839",
-                "Jl. Soekarno Hatta No. 120",
-                "https://randomuser.me/api/portraits/women/52.jpg"
-            ),
-            KematianModel(
-                "Roni Hidayat",
-                "147101080479001",
-                "Laki-laki",
-                "11/08/2026",
-                "Rumah Kediaman",
-                "Serangan Jantung",
-                "SKM-92840",
-                "Jl. Durian Gg. Rambutan",
-                "https://randomuser.me/api/portraits/men/53.jpg"
-            ),
-            KematianModel(
-                "Endang Sri",
-                "147106691055002",
-                "Perempuan",
-                "20/08/2026",
-                "RS Hermina",
-                "Komplikasi Ginjal",
-                "SKM-92841",
-                "Jl. Tuanku Tambusai Ujung",
-                "https://randomuser.me/api/portraits/women/54.jpg"
-            ),
-            KematianModel(
-                "Agus Zalukhu",
-                "147104190874004",
-                "Laki-laki",
-                "01/09/2026",
-                "Rumah Kediaman",
-                "TBC",
-                "SKM-92842",
-                "Jl. Sembilang No. 34",
-                "https://randomuser.me/api/portraits/men/55.jpg"
-            ),
-            KematianModel(
-                "Putri Ayu",
-                "147107520101001",
-                "Perempuan",
-                "10/09/2026",
-                "RSUD Arifin Achmad",
-                "Demam Tinggi",
-                "SKM-92843",
-                "Jl. KH. Ahmad Dahlan No. 8",
-                "https://randomuser.me/api/portraits/women/56.jpg"
-            ),
-            KematianModel(
-                "Zulkifli",
-                "147102040658002",
-                "Laki-laki",
-                "22/09/2026",
-                "RS Tabrani",
-                "Penyakit Paru Obstruktif",
-                "SKM-92844",
-                "Jl. Imam Munandar No. 88",
-                "https://randomuser.me/api/portraits/men/57.jpg"
-            ),
-            KematianModel(
-                "Rusmini",
-                "147108441149001",
-                "Perempuan",
-                "04/10/2026",
-                "Rumah Kediaman",
-                "Sakit Tua",
-                "SKM-92845",
-                "Jl. Pepaya Gg. Nangka",
-                "https://randomuser.me/api/portraits/women/58.jpg"
-            ),
-            KematianModel(
-                "Yusuf Mansur",
-                "147103290380002",
-                "Laki-laki",
-                "15/10/2026",
-                "RSUD Arifin Achmad",
-                "Penyakit Liver",
-                "SKM-92846",
-                "Jl. Dahlia No. 54",
-                "https://randomuser.me/api/portraits/men/59.jpg"
-            ),
-            KematianModel(
-                "Santi Rahayu",
-                "147106701294003",
-                "Perempuan",
-                "27/10/2026",
-                "Rumah Kediaman",
-                "Kanker Rahim",
-                "SKM-92847",
-                "Jl. Cempaka No. 19",
-                "https://randomuser.me/api/portraits/women/60.jpg"
-            )
-        )
+        db = AppDatabase.getInstance(requireContext())
+        adapter = KematianAdapter(listData) { entity ->
+            deleteKematian(entity)
+        }
 
         binding.rvKematian.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = KematianAdapter(listData)
+            adapter = this@TabKematianFragment.adapter
         }
+
+        // Set up FAB click listener
+        binding.fabAddKematian.setOnClickListener {
+            val intent = Intent(requireContext(), KematianFormActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchAndSeedData()
+    }
+
+    private fun fetchAndSeedData() {
+        lifecycleScope.launch {
+            var data = db.kematianDao().getAll()
+            if (data.isEmpty()) {
+                // Seed database with initial 30 mock items
+                val initialList = getInitialSeedList()
+                db.kematianDao().insertAll(initialList)
+                data = db.kematianDao().getAll()
+            }
+            listData.clear()
+            listData.addAll(data)
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun deleteKematian(entity: KematianEntity) {
+        lifecycleScope.launch {
+            db.kematianDao().delete(entity)
+            fetchAndSeedData()
+        }
+    }
+
+    private fun getInitialSeedList(): List<KematianEntity> {
+        return listOf(
+            KematianEntity(
+                nama = "Gibran Erlangga",
+                nik = "1471020039480",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "20/03/2026",
+                lokasi = "RSUD Arifin Achmad",
+                sebabKematian = "Sakit Tua",
+                noSurat = "SKM-92819",
+                alamat = "Jl. Sudirman No. 45",
+                imageUrl = "https://randomuser.me/api/portraits/men/31.jpg"
+            ),
+            KematianEntity(
+                nama = "Dewi Lestari",
+                nik = "1471092830193",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "02/05/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Serangan Jantung",
+                noSurat = "SKM-10293",
+                alamat = "Jl. Panam Blok C",
+                imageUrl = "https://randomuser.me/api/portraits/women/32.jpg"
+            ),
+            KematianEntity(
+                nama = "Bambang Sulistyo",
+                nik = "147101020348001",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "12/01/2026",
+                lokasi = "RSUD Arifin Achmad",
+                sebabKematian = "Stroke",
+                noSurat = "SKM-92820",
+                alamat = "Jl. Tuanku Tambusai No. 12",
+                imageUrl = "https://randomuser.me/api/portraits/men/33.jpg"
+            ),
+            KematianEntity(
+                nama = "Siti Rahmah",
+                nik = "147105421093002",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "18/01/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Sakit Tua",
+                noSurat = "SKM-92821",
+                alamat = "Jl. Soebrantas Samping Ponpes",
+                imageUrl = "https://randomuser.me/api/portraits/women/34.jpg"
+            ),
+            KematianEntity(
+                nama = "Ahmad Hidayat",
+                nik = "147103120572003",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "02/02/2026",
+                lokasi = "RS Jiwa Tampan",
+                sebabKematian = "Komplikasi",
+                noSurat = "SKM-92822",
+                alamat = "Jl. Suka Karya Gg. Al-Ikhlas",
+                imageUrl = "https://randomuser.me/api/portraits/men/35.jpg"
+            ),
+            KematianEntity(
+                nama = "Sri Wahyuni",
+                nik = "147108510663001",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "14/02/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Diabetes",
+                noSurat = "SKM-92823",
+                alamat = "Jl. Kartini No. 8B",
+                imageUrl = "https://randomuser.me/api/portraits/women/36.jpg"
+            ),
+            KematianEntity(
+                nama = "Joko Widodo",
+                nik = "147102150854002",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "03/03/2026",
+                lokasi = "RS Awal Bros",
+                sebabKematian = "Gagal Ginjal",
+                noSurat = "SKM-92824",
+                alamat = "Jl. Jenderal Sudirman No. 102",
+                imageUrl = "https://randomuser.me/api/portraits/men/37.jpg"
+            ),
+            KematianEntity(
+                nama = "Sumiati",
+                nik = "147109621151004",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "11/03/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Asma",
+                noSurat = "SKM-92825",
+                alamat = "Jl. Riau Gang Guru",
+                imageUrl = "https://randomuser.me/api/portraits/women/38.jpg"
+            ),
+            KematianEntity(
+                nama = "Hendra Wijaya",
+                nik = "147104050481002",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "25/03/2026",
+                lokasi = "Puskesmas Simpang Tiga",
+                sebabKematian = "Hipertensi",
+                noSurat = "SKM-92826",
+                alamat = "Jl. Kaharuddin Nasution No. 5",
+                imageUrl = "https://randomuser.me/api/portraits/men/39.jpg"
+            ),
+            KematianEntity(
+                nama = "Anisa Fitri",
+                nik = "147107440995001",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "04/04/2026",
+                lokasi = "RS Sansani",
+                sebabKematian = "Demam Berdarah",
+                noSurat = "SKM-92827",
+                alamat = "Jl. Soekarno Hatta Blok M",
+                imageUrl = "https://randomuser.me/api/portraits/women/40.jpg"
+            ),
+            KematianEntity(
+                nama = "Rudi Hartono",
+                nik = "147101230773003",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "15/04/2026",
+                lokasi = "RSUD Arifin Achmad",
+                sebabKematian = "Kanker Paru",
+                noSurat = "SKM-92828",
+                alamat = "Jl. Arifin Achmad No. 22",
+                imageUrl = "https://randomuser.me/api/portraits/men/41.jpg"
+            ),
+            KematianEntity(
+                nama = "Kartini",
+                nik = "147106520442001",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "29/04/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Sakit Tua",
+                noSurat = "SKM-92829",
+                alamat = "Jl. Melati Indah Gg. Damai",
+                imageUrl = "https://randomuser.me/api/portraits/women/42.jpg"
+            ),
+            KematianEntity(
+                nama = "Dedi Setiawan",
+                nik = "147103190885002",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "06/05/2026",
+                lokasi = "RS Ibnu Sina",
+                sebabKematian = "Asam Lambung Akut",
+                noSurat = "SKM-92830",
+                alamat = "Jl. Ahmad Yani No. 45",
+                imageUrl = "https://randomuser.me/api/portraits/men/43.jpg"
+            ),
+            KematianEntity(
+                nama = "Mega Utami",
+                nik = "147105551289001",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "16/05/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Kanker Payudara",
+                noSurat = "SKM-92831",
+                alamat = "Jl. Tanjung Datuk No. 14",
+                imageUrl = "https://randomuser.me/api/portraits/women/44.jpg"
+            ),
+            KematianEntity(
+                nama = "Mulyono",
+                nik = "147102110260003",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "28/05/2026",
+                lokasi = "RSUD Arifin Achmad",
+                sebabKematian = "Penyakit Jantung",
+                noSurat = "SKM-92832",
+                alamat = "Jl. Kulim Gg. Baiturrahman",
+                imageUrl = "https://randomuser.me/api/portraits/men/45.jpg"
+            ),
+            KematianEntity(
+                nama = "Evi Tamala",
+                nik = "147108420371002",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "05/06/2026",
+                lokasi = "RS PMC",
+                sebabKematian = "Stroke",
+                noSurat = "SKM-92833",
+                alamat = "Jl. Lembaga Permasyarakatan",
+                imageUrl = "https://randomuser.me/api/portraits/women/46.jpg"
+            ),
+            KematianEntity(
+                nama = "Budi Santoso",
+                nik = "147101010166005",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "12/06/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Sakit Tua",
+                noSurat = "SKM-92834",
+                alamat = "Jl. Harapan Raya Gg. Sabar",
+                imageUrl = "https://randomuser.me/api/portraits/men/47.jpg"
+            ),
+            KematianEntity(
+                nama = "Yulianti",
+                nik = "147106440783001",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "22/06/2026",
+                lokasi = "RS Petala Bumi",
+                sebabKematian = "Infeksi Paru",
+                noSurat = "SKM-92835",
+                alamat = "Jl. Dr. Sutomo No. 71",
+                imageUrl = "https://randomuser.me/api/portraits/women/48.jpg"
+            ),
+            KematianEntity(
+                nama = "Andi Permana",
+                nik = "147104121292002",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "03/07/2026",
+                lokasi = "RS Aulia",
+                sebabKematian = "Kecelakaan Kerja",
+                noSurat = "SKM-92836",
+                alamat = "Jl. Kubang Raya Km 2",
+                imageUrl = "https://randomuser.me/api/portraits/men/49.jpg"
+            ),
+            KematianEntity(
+                nama = "Siti Khadijah",
+                nik = "147105610550001",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "14/07/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Sakit Tua",
+                noSurat = "SKM-92837",
+                alamat = "Jl. Sekolah No. 9 Rumbai",
+                imageUrl = "https://randomuser.me/api/portraits/women/50.jpg"
+            ),
+            KematianEntity(
+                nama = "Fajar Nugraha",
+                nik = "147103250688002",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "25/07/2026",
+                lokasi = "RSUD Arifin Achmad",
+                sebabKematian = "Gagal Hati",
+                noSurat = "SKM-92838",
+                alamat = "Jl. Paus Gg. Beranti",
+                imageUrl = "https://randomuser.me/api/portraits/men/51.jpg"
+            ),
+            KematianEntity(
+                nama = "Diana Lestari",
+                nik = "147109550893003",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "02/08/2026",
+                lokasi = "RS Eka Hospital",
+                sebabKematian = "Leukemia",
+                noSurat = "SKM-92839",
+                alamat = "Jl. Soekarno Hatta No. 120",
+                imageUrl = "https://randomuser.me/api/portraits/women/52.jpg"
+            ),
+            KematianEntity(
+                nama = "Roni Hidayat",
+                nik = "147101080479001",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "11/08/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Serangan Jantung",
+                noSurat = "SKM-92840",
+                alamat = "Jl. Durian Gg. Rambutan",
+                imageUrl = "https://randomuser.me/api/portraits/men/53.jpg"
+            ),
+            KematianEntity(
+                nama = "Endang Sri",
+                nik = "147106691055002",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "20/08/2026",
+                lokasi = "RS Hermina",
+                sebabKematian = "Komplikasi Ginjal",
+                noSurat = "SKM-92841",
+                alamat = "Jl. Tuanku Tambusai Ujung",
+                imageUrl = "https://randomuser.me/api/portraits/women/54.jpg"
+            ),
+            KematianEntity(
+                nama = "Agus Zalukhu",
+                nik = "147104190874004",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "01/09/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "TBC",
+                noSurat = "SKM-92842",
+                alamat = "Jl. Sembilang No. 34",
+                imageUrl = "https://randomuser.me/api/portraits/men/55.jpg"
+            ),
+            KematianEntity(
+                nama = "Putri Ayu",
+                nik = "147107520101001",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "10/09/2026",
+                lokasi = "RSUD Arifin Achmad",
+                sebabKematian = "Demam Tinggi",
+                noSurat = "SKM-92843",
+                alamat = "Jl. KH. Ahmad Dahlan No. 8",
+                imageUrl = "https://randomuser.me/api/portraits/women/56.jpg"
+            ),
+            KematianEntity(
+                nama = "Zulkifli",
+                nik = "147102040658002",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "22/09/2026",
+                lokasi = "RS Tabrani",
+                sebabKematian = "Penyakit Paru Obstruktif",
+                noSurat = "SKM-92844",
+                alamat = "Jl. Imam Munandar No. 88",
+                imageUrl = "https://randomuser.me/api/portraits/men/57.jpg"
+            ),
+            KematianEntity(
+                nama = "Rusmini",
+                nik = "147108441149001",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "04/10/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Sakit Tua",
+                noSurat = "SKM-92845",
+                alamat = "Jl. Pepaya Gg. Nangka",
+                imageUrl = "https://randomuser.me/api/portraits/women/58.jpg"
+            ),
+            KematianEntity(
+                nama = "Yusuf Mansur",
+                nik = "147103290380002",
+                jenisKelamin = "Laki-laki",
+                tanggalMeninggal = "15/10/2026",
+                lokasi = "RSUD Arifin Achmad",
+                sebabKematian = "Penyakit Liver",
+                noSurat = "SKM-92846",
+                alamat = "Jl. Dahlia No. 54",
+                imageUrl = "https://randomuser.me/api/portraits/men/59.jpg"
+            ),
+            KematianEntity(
+                nama = "Santi Rahayu",
+                nik = "147106701294003",
+                jenisKelamin = "Perempuan",
+                tanggalMeninggal = "27/10/2026",
+                lokasi = "Rumah Kediaman",
+                sebabKematian = "Kanker Rahim",
+                noSurat = "SKM-92847",
+                alamat = "Jl. Cempaka No. 19",
+                imageUrl = "https://randomuser.me/api/portraits/women/60.jpg"
+            )
+        )
     }
 
     override fun onDestroyView() {
