@@ -10,7 +10,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class KelahiranAdapter(
     private val listKelahiran: List<KelahiranEntity>,
-    private val onDeleteClick: (KelahiranEntity) -> Unit
+    private val onDeleteClick: (KelahiranEntity) -> Unit,
+    private val onItemClick: (KelahiranEntity) -> Unit,
+    private val onReminderClick: (KelahiranEntity) -> Unit
 ) : RecyclerView.Adapter<KelahiranAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemKelahiranBinding) : RecyclerView.ViewHolder(binding.root)
@@ -30,6 +32,19 @@ class KelahiranAdapter(
             tvNamaAyah.text = "Nama Ayah: ${data.namaAyah}"
             tvNamaIbu.text = "Nama Ibu: ${data.namaIbu}"
 
+            // Bind status
+            tvStatus.text = data.status
+            if (data.status == "Draft") {
+                tvStatus.background?.setTint(android.graphics.Color.parseColor("#FF9800"))
+            } else {
+                tvStatus.background?.setTint(android.graphics.Color.parseColor("#4CAF50"))
+            }
+
+            // Click listener
+            holder.itemView.setOnClickListener {
+                onItemClick(data)
+            }
+
             // Delete action
             btnDelete.setOnClickListener {
                 MaterialAlertDialogBuilder(holder.itemView.context)
@@ -43,6 +58,11 @@ class KelahiranAdapter(
                         dialog.dismiss()
                     }
                     .show()
+            }
+
+            // Reminder action
+            btnCardReminder.setOnClickListener {
+                onReminderClick(data)
             }
 
             // Glide loader

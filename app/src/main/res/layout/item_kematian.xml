@@ -46,6 +46,19 @@
                     android:fontFamily="@font/urbanist_medium"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selesai"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:textSize="10sp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"
+                    android:background="@drawable/bg_status"
+                    android:layout_marginTop="6dp"/>
             </LinearLayout>
 
             <ImageView
@@ -152,6 +165,39 @@
                     android:textSize="12sp"
                     android:layout_marginTop="2dp"/>
             </LinearLayout>
+        </LinearLayout>
+
+        <!-- Divider Line -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EEEEEE"/>
+
+        <!-- Bottom Action Bar on the Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end|center_vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCardReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Atur Reminder"
+                android:textColor="@color/scholar_blue"
+                android:fontFamily="@font/urbanist_bold"
+                android:textSize="11sp"
+                app:icon="@drawable/ic_calendar"
+                app:iconSize="14dp"
+                app:iconTint="@color/scholar_blue"
+                app:strokeColor="@color/scholar_blue"
+                app:strokeWidth="1dp"
+                app:backgroundTint="@android:color/white"
+                app:cornerRadius="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

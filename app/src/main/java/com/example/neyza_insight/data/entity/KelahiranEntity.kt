@@ -12,5 +12,6 @@ data class KelahiranEntity(
     val tempatLahir: String,
     val namaAyah: String,
     val namaIbu: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val status: String = "Selesai"
 )

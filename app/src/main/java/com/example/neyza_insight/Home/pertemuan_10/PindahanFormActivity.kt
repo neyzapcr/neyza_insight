@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.neyza_insight.R
 import com.example.neyza_insight.data.AppDatabase
-import com.example.neyza_insight.data.entity.KematianEntity
-import com.example.neyza_insight.databinding.ActivityKematianFormBinding
+import com.example.neyza_insight.data.entity.PindahanEntity
+import com.example.neyza_insight.databinding.ActivityPindahanFormBinding
 import com.example.neyza_insight.reminder.ReminderDialogHelper
 import com.example.neyza_insight.reminder.ReminderHelper
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -20,15 +20,15 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-class KematianFormActivity : AppCompatActivity() {
+class PindahanFormActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityKematianFormBinding
+    private lateinit var binding: ActivityPindahanFormBinding
     private lateinit var db: AppDatabase
     private var currentDraftId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityKematianFormBinding.inflate(layoutInflater)
+        binding = ActivityPindahanFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         db = AppDatabase.getInstance(this)
@@ -44,7 +44,7 @@ class KematianFormActivity : AppCompatActivity() {
         val draftId = intent.getIntExtra("EXTRA_DRAFT_ID", 0)
         if (draftId > 0) {
             currentDraftId = draftId
-            supportActionBar?.title = "Edit Draft Kematian"
+            supportActionBar?.title = "Edit Draft Perpindahan"
             loadDraftData()
         }
 
@@ -57,10 +57,10 @@ class KematianFormActivity : AppCompatActivity() {
 
             val myFormat = "dd/MM/yyyy"
             val sdf = SimpleDateFormat(myFormat, Locale.US)
-            binding.etTanggalMeninggal.setText(sdf.format(calendar.time))
+            binding.etTanggalPindah.setText(sdf.format(calendar.time))
         }
 
-        binding.etTanggalMeninggal.setOnClickListener {
+        binding.etTanggalPindah.setOnClickListener {
             DatePickerDialog(
                 this,
                 dateSetListener,
@@ -72,47 +72,47 @@ class KematianFormActivity : AppCompatActivity() {
 
         // Save Draft Action
         binding.btnSaveDraft.setOnClickListener {
-            val nama = binding.etNamaKematian.text.toString().trim()
+            val nama = binding.etNamaPindahan.text.toString().trim()
             if (nama.isEmpty()) {
-                binding.etNamaKematian.error = "Nama wajib diisi untuk menyimpan draft"
+                binding.etNamaPindahan.error = "Nama wajib diisi untuk menyimpan draft"
                 return@setOnClickListener
             }
 
             val nik = binding.etNik.text.toString().trim()
-            val noSurat = binding.etNoSurat.text.toString().trim()
-            val tanggalMeninggal = binding.etTanggalMeninggal.text.toString().trim()
-            val lokasi = binding.etLokasi.text.toString().trim()
-            val sebab = binding.etSebab.text.toString().trim()
-            val alamat = binding.etAlamat.text.toString().trim()
+            val noSuratPindah = binding.etNoSuratPindah.text.toString().trim()
+            val tanggalPindah = binding.etTanggalPindah.text.toString().trim()
+            val alamatAsal = binding.etAlamatAsal.text.toString().trim()
+            val alamatTujuan = binding.etAlamatTujuan.text.toString().trim()
+            val alasanPindah = binding.etAlasanPindah.text.toString().trim()
             var imageUrl = binding.etImageUrl.text.toString().trim()
 
             val jenisKelamin = if (binding.rbLaki.isChecked) "Laki-laki" else "Perempuan"
 
             if (imageUrl.isEmpty()) {
-                imageUrl = "https://randomuser.me/api/portraits/lego/2.jpg"
+                imageUrl = "https://randomuser.me/api/portraits/lego/3.jpg"
             }
 
             lifecycleScope.launch {
-                val record = KematianEntity(
+                val record = PindahanEntity(
                     id = currentDraftId,
                     nama = nama,
                     nik = nik,
-                    noSurat = noSurat,
-                    tanggalMeninggal = tanggalMeninggal,
-                    lokasi = lokasi,
-                    sebabKematian = sebab,
+                    noSuratPindah = noSuratPindah,
+                    tanggalPindah = tanggalPindah,
+                    alamatAsal = alamatAsal,
+                    alamatTujuan = alamatTujuan,
+                    alasanPindah = alasanPindah,
                     jenisKelamin = jenisKelamin,
-                    alamat = alamat,
                     imageUrl = imageUrl,
                     status = "Draft"
                 )
-                val insertedId = db.kematianDao().insert(record)
+                val insertedId = db.pindahanDao().insert(record)
                 currentDraftId = insertedId.toInt()
 
                 val resultIntent = android.content.Intent().apply {
                     putExtra("SHOW_SNACKBAR", true)
                     putExtra("DRAFT_ID", currentDraftId)
-                    putExtra("EVENT_TYPE", "kematian")
+                    putExtra("EVENT_TYPE", "pindahan")
                 }
                 setResult(android.app.Activity.RESULT_OK, resultIntent)
                 finish()
@@ -120,45 +120,45 @@ class KematianFormActivity : AppCompatActivity() {
         }
 
         // Save Complete Action
-        binding.btnSaveKematian.setOnClickListener {
-            val nama = binding.etNamaKematian.text.toString().trim()
+        binding.btnSavePindahan.setOnClickListener {
+            val nama = binding.etNamaPindahan.text.toString().trim()
             val nik = binding.etNik.text.toString().trim()
-            val noSurat = binding.etNoSurat.text.toString().trim()
-            val tanggalMeninggal = binding.etTanggalMeninggal.text.toString().trim()
-            val lokasi = binding.etLokasi.text.toString().trim()
-            val sebab = binding.etSebab.text.toString().trim()
-            val alamat = binding.etAlamat.text.toString().trim()
+            val noSuratPindah = binding.etNoSuratPindah.text.toString().trim()
+            val tanggalPindah = binding.etTanggalPindah.text.toString().trim()
+            val alamatAsal = binding.etAlamatAsal.text.toString().trim()
+            val alamatTujuan = binding.etAlamatTujuan.text.toString().trim()
+            val alasanPindah = binding.etAlasanPindah.text.toString().trim()
             var imageUrl = binding.etImageUrl.text.toString().trim()
 
             val jenisKelamin = if (binding.rbLaki.isChecked) "Laki-laki" else "Perempuan"
 
-            if (nama.isEmpty() || nik.isEmpty() || noSurat.isEmpty() ||
-                tanggalMeninggal.isEmpty() || lokasi.isEmpty() || sebab.isEmpty() ||
-                alamat.isEmpty()) {
+            if (nama.isEmpty() || nik.isEmpty() || noSuratPindah.isEmpty() ||
+                tanggalPindah.isEmpty() || alamatAsal.isEmpty() || alamatTujuan.isEmpty() ||
+                alasanPindah.isEmpty()) {
                 Toast.makeText(this, "Mohon lengkapi semua kolom!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (imageUrl.isEmpty()) {
-                imageUrl = "https://randomuser.me/api/portraits/lego/2.jpg"
+                imageUrl = "https://randomuser.me/api/portraits/lego/3.jpg"
             }
 
             lifecycleScope.launch {
-                val record = KematianEntity(
+                val record = PindahanEntity(
                     id = currentDraftId,
                     nama = nama,
                     nik = nik,
-                    noSurat = noSurat,
-                    tanggalMeninggal = tanggalMeninggal,
-                    lokasi = lokasi,
-                    sebabKematian = sebab,
+                    noSuratPindah = noSuratPindah,
+                    tanggalPindah = tanggalPindah,
+                    alamatAsal = alamatAsal,
+                    alamatTujuan = alamatTujuan,
+                    alasanPindah = alasanPindah,
                     jenisKelamin = jenisKelamin,
-                    alamat = alamat,
                     imageUrl = imageUrl,
                     status = "Selesai"
                 )
-                db.kematianDao().insert(record)
-                Toast.makeText(this@KematianFormActivity, "Data Kematian berhasil disimpan!", Toast.LENGTH_SHORT).show()
+                db.pindahanDao().insert(record)
+                Toast.makeText(this@PindahanFormActivity, "Data Perpindahan berhasil disimpan!", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
@@ -166,16 +166,16 @@ class KematianFormActivity : AppCompatActivity() {
 
     private fun loadDraftData() {
         lifecycleScope.launch {
-            val data = db.kematianDao().getAll()
+            val data = db.pindahanDao().getAll()
             val draft = data.find { it.id == currentDraftId }
             draft?.let {
-                binding.etNamaKematian.setText(it.nama)
+                binding.etNamaPindahan.setText(it.nama)
                 binding.etNik.setText(it.nik)
-                binding.etNoSurat.setText(it.noSurat)
-                binding.etTanggalMeninggal.setText(it.tanggalMeninggal)
-                binding.etLokasi.setText(it.lokasi)
-                binding.etSebab.setText(it.sebabKematian)
-                binding.etAlamat.setText(it.alamat)
+                binding.etNoSuratPindah.setText(it.noSuratPindah)
+                binding.etTanggalPindah.setText(it.tanggalPindah)
+                binding.etAlamatAsal.setText(it.alamatAsal)
+                binding.etAlamatTujuan.setText(it.alamatTujuan)
+                binding.etAlasanPindah.setText(it.alasanPindah)
                 binding.etImageUrl.setText(it.imageUrl)
                 if (it.jenisKelamin == "Laki-laki") {
                     binding.rbLaki.isChecked = true

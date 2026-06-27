@@ -13,7 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/scholar_blue"
         app:navigationIcon="@drawable/ic_back"
-        app:title="Tambah Data Kematian"
+        app:title="Tambah Data Perpindahan"
         app:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,9 +35,9 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Card 1: Identitas Almarhum/ah -->
+            <!-- Card 1: Identitas Warga -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardDeceased"
+                android:id="@+id/cardResident"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -67,7 +67,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Identitas Almarhum/ah"
+                            android:text="Identitas Warga"
                             android:textColor="@color/scholar_blue"
                             android:fontFamily="@font/urbanist_bold"
                             android:textSize="14sp"/>
@@ -77,7 +77,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="Nama Lengkap Almarhum/ah"
+                        android:hint="Nama Lengkap Warga"
                         app:startIconDrawable="@drawable/ic_person"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -87,7 +87,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etNamaKematian"
+                            android:id="@+id/etNamaPindahan"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPersonName"
@@ -97,8 +97,8 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:hint="NIK Almarhum/ah"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Nomor NIK"
                         app:startIconDrawable="@drawable/ic_document"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -119,51 +119,43 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jenis Kelamin"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/urbanist_bold"
                         android:textSize="12sp"
-                        android:layout_marginBottom="8dp"/>
+                        android:layout_marginBottom="6dp"/>
 
                     <RadioGroup
-                        android:id="@+id/rgJenisKelamin"
+                        android:id="@+id/radioGroupGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="12dp">
 
                         <RadioButton
                             android:id="@+id/rbLaki"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="8dp"
-                            android:button="@null"
-                            android:background="@drawable/bg_radio_button"
-                            android:textColor="@color/color_radio_text"
-                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Laki-laki"
                             android:checked="true"
-                            android:fontFamily="@font/urbanist_semibold"/>
+                            android:fontFamily="@font/urbanist_medium"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="24dp"/>
 
                         <RadioButton
                             android:id="@+id/rbPerempuan"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:button="@null"
-                            android:background="@drawable/bg_radio_button"
-                            android:textColor="@color/color_radio_text"
-                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Perempuan"
-                            android:fontFamily="@font/urbanist_semibold"/>
+                            android:fontFamily="@font/urbanist_medium"
+                            android:textSize="14sp"/>
                     </RadioGroup>
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 2: Informasi Kematian -->
+            <!-- Card 2: Informasi Perpindahan -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardDeathInfo"
+                android:id="@+id/cardRelocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -193,7 +185,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Informasi Kematian"
+                            android:text="Informasi Perpindahan"
                             android:textColor="@color/scholar_blue"
                             android:fontFamily="@font/urbanist_bold"
                             android:textSize="14sp"/>
@@ -203,7 +195,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="Nomor Surat Kematian"
+                        android:hint="Nomor Surat Pindah"
                         app:startIconDrawable="@drawable/ic_document"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -213,7 +205,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etNoSurat"
+                            android:id="@+id/etNoSuratPindah"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
@@ -224,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="Tanggal Meninggal (DD/MM/YYYY)"
+                        android:hint="Tanggal Pindah (DD/MM/YYYY)"
                         app:startIconDrawable="@drawable/ic_calendar"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -234,7 +226,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etTanggalMeninggal"
+                            android:id="@+id/etTanggalPindah"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="date"
@@ -247,7 +239,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="Lokasi Wafat (misal: RSUD Arifin Achmad)"
+                        android:hint="Alamat Asal"
                         app:startIconDrawable="@drawable/ic_location"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -257,7 +249,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etLokasi"
+                            android:id="@+id/etAlamatAsal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
@@ -268,27 +260,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="Sebab Kematian"
-                        app:startIconDrawable="@drawable/ic_info"
-                        app:startIconTint="@color/scholar_blue"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etSebab"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:fontFamily="@font/urbanist_medium" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Alamat Terakhir"
+                        android:hint="Alamat Tujuan"
                         app:startIconDrawable="@drawable/ic_location"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -298,7 +270,27 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etAlamat"
+                            android:id="@+id/etAlamatTujuan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:fontFamily="@font/urbanist_medium" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Alasan Pindah"
+                        app:startIconDrawable="@drawable/ic_document"
+                        app:startIconTint="@color/scholar_blue"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etAlasanPindah"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
@@ -400,7 +392,7 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSaveKematian"
+            android:id="@+id/btnSavePindahan"
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_weight="1"

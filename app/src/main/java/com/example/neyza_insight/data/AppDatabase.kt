@@ -6,18 +6,21 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.neyza_insight.data.dao.KelahiranDao
 import com.example.neyza_insight.data.dao.KematianDao
+import com.example.neyza_insight.data.dao.PindahanDao
 import com.example.neyza_insight.data.entity.KelahiranEntity
 import com.example.neyza_insight.data.entity.KematianEntity
+import com.example.neyza_insight.data.entity.PindahanEntity
 
 @Database(
-    entities = [KelahiranEntity::class, KematianEntity::class],
-    version = 1,
+    entities = [KelahiranEntity::class, KematianEntity::class, PindahanEntity::class],
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun kelahiranDao(): KelahiranDao
     abstract fun kematianDao(): KematianDao
+    abstract fun pindahanDao(): PindahanDao
 
     companion object {
         @Volatile

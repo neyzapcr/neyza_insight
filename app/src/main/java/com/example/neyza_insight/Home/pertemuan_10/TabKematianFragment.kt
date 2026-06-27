@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.neyza_insight.data.AppDatabase
 import com.example.neyza_insight.data.entity.KematianEntity
 import com.example.neyza_insight.databinding.FragmentTabKematianBinding
+import com.example.neyza_insight.R
+import com.example.neyza_insight.reminder.ReminderDialogHelper
 import kotlinx.coroutines.launch
 
 class TabKematianFragment : Fragment() {
@@ -20,6 +22,32 @@ class TabKematianFragment : Fragment() {
     private lateinit var db: AppDatabase
     private lateinit var adapter: KematianAdapter
     private val listData = mutableListOf<KematianEntity>()
+    private val allDataList = mutableListOf<KematianEntity>()
+    private var selectedFilter = "Semua"
+
+    private val formLauncher = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == android.app.Activity.RESULT_OK) {
+            val data = result.data
+            val showSnackbar = data?.getBooleanExtra("SHOW_SNACKBAR", false) ?: false
+            if (showSnackbar) {
+                val draftId = data?.getIntExtra("DRAFT_ID", 0) ?: 0
+                val eventType = data?.getStringExtra("EVENT_TYPE") ?: ""
+                showDraftSavedSnackbar(eventType, draftId)
+            }
+        }
+    }
+
+    private fun showDraftSavedSnackbar(eventType: String, draftId: Int) {
+        val snackbar = com.google.android.material.snackbar.Snackbar.make(
+            binding.root,
+            "Draft tersimpan",
+            com.google.android.material.snackbar.Snackbar.LENGTH_LONG
+        )
+        snackbar.setAction("Atur Reminder") {
+            ReminderDialogHelper.showDraftReminderDialog(requireContext(), eventType, draftId)
+        }
+        snackbar.show()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentTabKematianBinding.inflate(inflater, container, false)
@@ -30,24 +58,60 @@ class TabKematianFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         db = AppDatabase.getInstance(requireContext())
-        adapter = KematianAdapter(listData) { entity ->
-            deleteKematian(entity)
-        }
+        adapter = KematianAdapter(
+            listKematian = listData,
+            onDeleteClick = { entity ->
+                deleteKematian(entity)
+            },
+            onItemClick = { entity ->
+                if (entity.status == "Draft") {
+                    val intent = Intent(requireContext(), KematianFormActivity::class.java).apply {
+                        putExtra("EXTRA_DRAFT_ID", entity.id)
+                    }
+                    formLauncher.launch(intent)
+                }
+            },
+            onReminderClick = { entity ->
+                ReminderDialogHelper.showReminderDialog(requireContext(), 1)
+            }
+        )
 
         binding.rvKematian.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@TabKematianFragment.adapter
         }
 
+        // Set up ChipGroup filter listener
+        binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
+            val checkedId = checkedIds.firstOrNull()
+            selectedFilter = when (checkedId) {
+                R.id.chipDraft -> "Draft"
+                R.id.chipSelesai -> "Selesai"
+                else -> "Semua"
+            }
+            applyFilter()
+        }
+
         // Set up FAB click listener
         binding.fabAddKematian.setOnClickListener {
             val intent = Intent(requireContext(), KematianFormActivity::class.java)
-            startActivity(intent)
+            formLauncher.launch(intent)
         }
     }
 
     override fun onResume() {
         super.onResume()
+
+        // Check if opened from notification
+        val activityIntent = requireActivity().intent
+        val filterDraft = activityIntent.getBooleanExtra("FILTER_DRAFT", false)
+        val targetTab = activityIntent.getIntExtra("TARGET_TAB", -1)
+        if (filterDraft && targetTab == 1) {
+            binding.chipGroupFilter.check(R.id.chipDraft)
+            selectedFilter = "Draft"
+            activityIntent.removeExtra("FILTER_DRAFT")
+        }
+
         fetchAndSeedData()
     }
 
@@ -60,10 +124,20 @@ class TabKematianFragment : Fragment() {
                 db.kematianDao().insertAll(initialList)
                 data = db.kematianDao().getAll()
             }
-            listData.clear()
-            listData.addAll(data)
-            adapter.notifyDataSetChanged()
+            allDataList.clear()
+            allDataList.addAll(data)
+            applyFilter()
         }
+    }
+
+    private fun applyFilter() {
+        listData.clear()
+        when (selectedFilter) {
+            "Draft" -> listData.addAll(allDataList.filter { it.status == "Draft" })
+            "Selesai" -> listData.addAll(allDataList.filter { it.status == "Selesai" })
+            else -> listData.addAll(allDataList)
+        }
+        adapter.notifyDataSetChanged()
     }
 
     private fun deleteKematian(entity: KematianEntity) {

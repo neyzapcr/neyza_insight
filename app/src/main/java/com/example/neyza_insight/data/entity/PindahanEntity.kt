@@ -3,17 +3,17 @@ package com.example.neyza_insight.data.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "kematian")
-data class KematianEntity(
+@Entity(tableName = "pindahan")
+data class PindahanEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val nama: String,
-    val noSurat: String,
-    val tanggalMeninggal: String,
-    val lokasi: String,
-    val sebabKematian: String,
+    val noSuratPindah: String,
+    val tanggalPindah: String,
+    val alamatTujuan: String,
+    val alasanPindah: String,
     val nik: String,
     val jenisKelamin: String,
-    val alamat: String,
+    val alamatAsal: String,
     val imageUrl: String,
     val status: String = "Selesai"
 )

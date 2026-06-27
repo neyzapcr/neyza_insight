@@ -10,7 +10,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class KematianAdapter(
     private val listKematian: List<KematianEntity>,
-    private val onDeleteClick: (KematianEntity) -> Unit
+    private val onDeleteClick: (KematianEntity) -> Unit,
+    private val onItemClick: (KematianEntity) -> Unit,
+    private val onReminderClick: (KematianEntity) -> Unit
 ) : RecyclerView.Adapter<KematianAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemKematianBinding) : RecyclerView.ViewHolder(binding.root)
@@ -31,6 +33,19 @@ class KematianAdapter(
             tvNoSuratKematian.text = "No. Surat: ${item.noSurat}"
             tvAlamatKematian.text = "Alamat: ${item.alamat}"
 
+            // Bind status
+            tvStatus.text = item.status
+            if (item.status == "Draft") {
+                tvStatus.background?.setTint(android.graphics.Color.parseColor("#FF9800"))
+            } else {
+                tvStatus.background?.setTint(android.graphics.Color.parseColor("#4CAF50"))
+            }
+
+            // Click listener
+            holder.itemView.setOnClickListener {
+                onItemClick(item)
+            }
+
             // Delete action
             btnDelete.setOnClickListener {
                 MaterialAlertDialogBuilder(holder.itemView.context)
@@ -44,6 +59,11 @@ class KematianAdapter(
                         dialog.dismiss()
                     }
                     .show()
+            }
+
+            // Reminder action
+            btnCardReminder.setOnClickListener {
+                onReminderClick(item)
             }
 
             // Glide loader

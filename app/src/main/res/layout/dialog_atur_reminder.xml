@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_calendar"
+                app:tint="@color/scholar_blue"
+                android:layout_marginEnd="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Atur Pengingat"
+                android:textColor="@color/scholar_blue"
+                android:fontFamily="@font/urbanist_bold"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih waktu pengingat agar Anda tidak lupa untuk melanjutkan pengisian data draft ini."
+            android:textColor="#666666"
+            android:fontFamily="@font/urbanist_medium"
+            android:textSize="14sp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Options Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Option 1: 5 Menit -->
+            <LinearLayout
+                android:id="@+id/btnOpt5Min"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_dialog_option"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="@color/scholar_blue"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5 Menit"
+                    android:textColor="#333333"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <!-- Option 2: 10 Menit -->
+            <LinearLayout
+                android:id="@+id/btnOpt10Min"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_dialog_option"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="@color/scholar_blue"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10 Menit"
+                    android:textColor="#333333"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <!-- Option 3: 30 Menit -->
+            <LinearLayout
+                android:id="@+id/btnOpt30Min"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_dialog_option"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="@color/scholar_blue"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="30 Menit"
+                    android:textColor="#333333"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <!-- Option 4: Menit Kustom -->
+            <LinearLayout
+                android:id="@+id/btnOptCustomMin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_dialog_option"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_document"
+                    app:tint="@color/scholar_blue"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Masukkan Menit Kustom..."
+                    android:textColor="#333333"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <!-- Option 5: Jam & Menit Spesifik -->
+            <LinearLayout
+                android:id="@+id/btnOptSpecificTime"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_dialog_option"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_person"
+                    app:tint="@color/scholar_blue"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pilih Jam &amp; Menit Spesifik..."
+                    android:textColor="#333333"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <!-- Option 6: 10 Detik (Pengujian) -->
+            <LinearLayout
+                android:id="@+id/btnOpt10Sec"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_dialog_option"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_link"
+                    app:tint="@color/scholar_blue"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10 Detik (Pengujian)"
+                    android:textColor="#E65100"
+                    android:fontFamily="@font/urbanist_semibold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Cancel Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelReminder"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Batal (Simpan Tanpa Pengingat)"
+            android:textColor="#666666"
+            android:fontFamily="@font/urbanist_bold"
+            android:textSize="14sp"
+            app:strokeColor="#DDDDDD"
+            app:strokeWidth="1dp"
+            app:backgroundTint="@android:color/white"
+            app:cornerRadius="12dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
