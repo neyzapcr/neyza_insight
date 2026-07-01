@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.neyza_insight.R
 
@@ -40,6 +41,8 @@ class PersegiPanjangActivity : AppCompatActivity() {
 
             val keliling = 2 * (p + l)
             val luas = p * l
+
+            Log.d("CalculationResult", "Persegi Panjang -> Panjang: $p, Lebar: $l | Keliling: $keliling, Luas: $luas")
 
             txtHasil.text = "Keliling : $keliling\nLuas : $luas"
         }

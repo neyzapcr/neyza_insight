@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.neyza_insight.R
 
@@ -43,6 +44,8 @@ class BalokActivity : AppCompatActivity() {
 
             val volume = p * l * t
             val luas = 2 * (p * l + p * t + l * t)
+
+            Log.d("CalculationResult", "Balok -> Panjang: $p, Lebar: $l, Tinggi: $t | Volume: $volume, Luas Permukaan: $luas")
 
             txtHasil.text = "Volume : $volume\nLuas Permukaan : $luas"
         }
