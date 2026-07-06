@@ -37,6 +37,7 @@ class TabKelahiranFragment : Fragment() {
         }
     }
 
+
     private fun showDraftSavedSnackbar(eventType: String, draftId: Int) {
         val snackbar = com.google.android.material.snackbar.Snackbar.make(
             binding.root,
