@@ -25,6 +25,7 @@ class TabKelahiranFragment : Fragment() {
     private val allDataList = mutableListOf<KelahiranEntity>()
     private var selectedFilter = "Semua"
 
+
     private val formLauncher = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == android.app.Activity.RESULT_OK) {
             val data = result.data
