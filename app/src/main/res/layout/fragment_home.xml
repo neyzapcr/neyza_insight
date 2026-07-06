@@ -128,18 +128,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvHighlightSmall" />
 
-                <TextView
-                    android:id="@+id/tvHighlightDesc"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/urbanist_medium"
-                    android:text="Platform Digital untuk mengelola informasi kependudukan secara akurat."
-                    android:textColor="@color/scholar_light_blue_text_2"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@id/tvHighlightEmoji"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvHighlightTitle" />
 
                 <TextView
                     android:id="@+id/tvHighlightEmoji"
@@ -412,18 +400,19 @@
                     app:backgroundTint="@color/scholar_blue"
                     app:cornerRadius="16dp"
                     app:elevation="0dp"
-                    app:layout_constraintEnd_toStartOf="@id/btnDataPeristiwa"
+                    app:layout_constraintEnd_toStartOf="@id/btnDataKeluarga"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnFavorite" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDataPeristiwa"
+                    android:id="@+id/btnDataKeluarga"
                     android:layout_width="0dp"
                     android:layout_height="58dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="12dp"
-                    android:fontFamily="@font/urbanist_semibold"
-                    android:text="📅 Peristiwa"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:text="👨‍👩‍👧‍👦 Keluarga"
+                    android:textStyle="bold"
                     app:rippleColor="@color/scholar_dark_blue"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -434,6 +423,25 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/btnDataWarga"
                     app:layout_constraintTop_toBottomOf="@id/btnWebView" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDataPeristiwa"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:text="📅 Data Peristiwa"
+                    android:textStyle="bold"
+                    app:rippleColor="@color/scholar_dark_blue"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/scholar_blue"
+                    app:cornerRadius="16dp"
+                    app:elevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnDataWarga" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

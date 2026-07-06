@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F7FF">
@@ -13,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/scholar_blue"
         app:navigationIcon="@drawable/ic_back"
-        app:title="Tambah Data Kelahiran"
+        app:title="Tambah Data Keluarga"
         app:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,9 +34,8 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Card 1: Informasi Bayi -->
+            <!-- Card: Form Input -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardBaby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -67,38 +65,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Informasi Bayi"
+                            android:text="Informasi Kartu Keluarga"
                             android:textColor="@color/scholar_blue"
                             android:fontFamily="@font/urbanist_bold"
                             android:textSize="14sp"/>
                     </LinearLayout>
 
+                    <!-- Nomor Kartu Keluarga -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="Nama Lengkap Bayi"
-                        app:startIconDrawable="@drawable/ic_person"
-                        app:startIconTint="@color/scholar_blue"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etNamaBayi"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPersonName"
-                            android:fontFamily="@font/urbanist_medium" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:hint="Nomor Akta Kelahiran"
+                        android:hint="Nomor Kartu Keluarga (KK)"
                         app:startIconDrawable="@drawable/ic_document"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -108,19 +86,20 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etNoAkta"
+                            android:id="@+id/etNoKk"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:fontFamily="@font/urbanist_medium" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Nama Kepala Keluarga -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="Tanggal Lahir (DD/MM/YYYY)"
-                        app:startIconDrawable="@drawable/ic_calendar"
+                        android:hint="Nama Kepala Keluarga"
+                        app:startIconDrawable="@drawable/ic_person"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
                         app:boxCornerRadiusTopEnd="12dp"
@@ -129,19 +108,19 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etTanggalLahir"
+                            android:id="@+id/etNamaKepalaKeluarga"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="date"
-                            android:focusable="false"
-                            android:clickable="true"
+                            android:inputType="textPersonName"
                             android:fontFamily="@font/urbanist_medium" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Alamat -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Tempat Lahir"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Alamat Lengkap"
                         app:startIconDrawable="@drawable/ic_location"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -151,59 +130,62 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etTempatLahir"
+                            android:id="@+id/etAlamat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
                             android:fontFamily="@font/urbanist_medium" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card 2: Informasi Orang Tua -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardParents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:strokeColor="@color/scholar_border"
-                app:strokeWidth="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="16dp">
-                        <View
-                            android:layout_width="4dp"
-                            android:layout_height="16dp"
-                            android:background="@color/scholar_blue"
-                            android:layout_marginEnd="8dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Informasi Orang Tua"
-                            android:textColor="@color/scholar_blue"
-                            android:fontFamily="@font/urbanist_bold"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-
+                    <!-- RT/RW -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="Nama Ayah Kandung"
+                        android:hint="RT/RW (Contoh: 02/03)"
+                        app:startIconDrawable="@drawable/ic_location"
+                        app:startIconTint="@color/scholar_blue"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRtRw"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:fontFamily="@font/urbanist_medium" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Dusun -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Dusun"
+                        app:startIconDrawable="@drawable/ic_location"
+                        app:startIconTint="@color/scholar_blue"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDusun"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:fontFamily="@font/urbanist_medium" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Jumlah Anggota -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Jumlah Anggota Keluarga"
                         app:startIconDrawable="@drawable/ic_person"
                         app:startIconTint="@color/scholar_blue"
                         app:boxCornerRadiusTopStart="12dp"
@@ -213,130 +195,11 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etNamaAyah"
+                            android:id="@+id/etJumlahAnggota"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPersonName"
+                            android:inputType="number"
                             android:fontFamily="@font/urbanist_medium" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nama Ibu Kandung"
-                        app:startIconDrawable="@drawable/ic_person"
-                        app:startIconTint="@color/scholar_blue"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etNamaIbu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPersonName"
-                            android:fontFamily="@font/urbanist_medium" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card 3: Media & Foto -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardMedia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:strokeColor="@color/scholar_border"
-                app:strokeWidth="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="16dp">
-                        <View
-                            android:layout_width="4dp"
-                            android:layout_height="16dp"
-                            android:background="@color/scholar_blue"
-                            android:layout_marginEnd="8dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Media &amp; Foto"
-                            android:textColor="@color/scholar_blue"
-                            android:fontFamily="@font/urbanist_bold"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/imgPreview"
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:layout_marginBottom="12dp"
-                        android:background="#E8EFFF"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_document"
-                        app:tint="@color/scholar_blue" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2"
-                        android:layout_marginBottom="12dp">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnCamera"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="6dp"
-                            android:text="📷 Kamera"
-                            android:textColor="@color/scholar_blue"
-                            app:strokeColor="@color/scholar_blue"
-                            app:strokeWidth="1.5dp"
-                            app:cornerRadius="12dp" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnGallery"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="6dp"
-                            android:text="🖼️ Galeri"
-                            android:textColor="@color/scholar_blue"
-                            app:strokeColor="@color/scholar_blue"
-                            app:strokeWidth="1.5dp"
-                            app:cornerRadius="12dp" />
-
-                    </LinearLayout>
-
-                    <!-- Hidden but preserved for binding compatibility -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etImageUrl"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textUri" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -351,34 +214,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSaveDraft"
-            android:layout_width="0dp"
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:text="Simpan Draft"
-            android:textColor="@color/scholar_blue"
-            android:fontFamily="@font/urbanist_bold"
-            android:textSize="14sp"
-            app:strokeColor="@color/scholar_blue"
-            app:strokeWidth="2dp"
-            app:backgroundTint="@android:color/white"
-            app:cornerRadius="16dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSaveKelahiran"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:text="Simpan"
+            android:text="Simpan Data"
             android:textColor="@android:color/white"
             android:fontFamily="@font/urbanist_bold"
             android:textSize="14sp"

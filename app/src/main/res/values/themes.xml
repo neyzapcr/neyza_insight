@@ -18,4 +18,9 @@
     <style name="AllRoundedCard" parent="">
         <item name="cornerSize">12dp</item>
     </style>
+
+    <!-- Theme overlay to make the M3 bottom navigation active indicator capsule transparent -->
+    <style name="Theme.NeyzaInsight.BottomNav">
+        <item name="colorContainer">@android:color/transparent</item>
+    </style>
 </resources>

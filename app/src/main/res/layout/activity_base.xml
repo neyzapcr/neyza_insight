@@ -27,6 +27,7 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="36dp"
         app:cardElevation="12dp"
+        app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -36,10 +37,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            app:itemIconSize="20dp"
-            app:itemTextAppearanceActive="@color/scholar_blue"
-            app:itemIconTint="@color/scholar_dark_blue"
-            app:itemTextColor="@color/scholar_dark_blue"
+            android:theme="@style/Theme.NeyzaInsight.BottomNav"
+            app:elevation="0dp"
+            app:itemIconSize="22dp"
+            app:itemIconTint="@color/nav_item_color"
+            app:itemTextColor="@color/nav_item_color"
+            app:paddingBottomSystemWindowInsets="false"
+            app:paddingTopSystemWindowInsets="false"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_nav_menu" />
 

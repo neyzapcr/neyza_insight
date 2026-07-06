@@ -69,6 +69,8 @@ class TabPindahanFragment : Fragment() {
                         putExtra("EXTRA_DRAFT_ID", entity.id)
                     }
                     formLauncher.launch(intent)
+                } else {
+                    showDetailDialog(entity)
                 }
             },
             onReminderClick = { entity ->
@@ -510,6 +512,38 @@ class TabPindahanFragment : Fragment() {
                 status = "Selesai"
             )
         )
+    }
+
+    private fun showDetailDialog(entity: PindahanEntity) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_detail_peristiwa, null)
+        val tvTitle = dialogView.findViewById<android.widget.TextView>(R.id.tvTitle)
+        val tvDetails = dialogView.findViewById<android.widget.TextView>(R.id.tvDetails)
+        val imgAttachment = dialogView.findViewById<android.widget.ImageView>(R.id.imgAttachment)
+
+        tvTitle.text = "Detail Peristiwa Perpindahan"
+        tvDetails.text = 
+            "Nama           : ${entity.nama}\n" +
+            "NIK            : ${entity.nik}\n" +
+            "No. Surat      : ${entity.noSuratPindah}\n" +
+            "Tgl Pindah     : ${entity.tanggalPindah}\n" +
+            "Alamat Asal    : ${entity.alamatAsal}\n" +
+            "Alamat Tujuan  : ${entity.alamatTujuan}\n" +
+            "Alasan Pindah  : ${entity.alasanPindah}\n" +
+            "Jenis Kelamin  : ${entity.jenisKelamin}\n" +
+            "Status         : ${entity.status}"
+
+        com.bumptech.glide.Glide.with(requireContext())
+            .load(entity.imageUrl)
+            .placeholder(R.drawable.ic_document)
+            .error(R.drawable.ic_document)
+            .into(imgAttachment)
+
+        com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
+            .setView(dialogView)
+            .setPositiveButton("Tutup") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     override fun onDestroyView() {

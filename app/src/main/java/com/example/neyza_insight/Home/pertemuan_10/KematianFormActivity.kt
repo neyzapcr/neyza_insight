@@ -26,6 +26,86 @@ class KematianFormActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     private var currentDraftId: Int = 0
 
+    private var currentPhotoUri: android.net.Uri? = null
+
+    private val cameraLauncher = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == android.app.Activity.RESULT_OK) {
+            currentPhotoUri?.let { uri ->
+                binding.etImageUrl.setText(uri.toString())
+                com.bumptech.glide.Glide.with(this)
+                    .load(uri)
+                    .placeholder(R.drawable.ic_document)
+                    .into(binding.imgPreview)
+                // Refresh galeri
+                sendBroadcast(android.content.Intent(android.content.Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
+            }
+        }
+    }
+
+    private val permissionLauncher = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.RequestPermission()) { isGranted ->
+        if (isGranted) {
+            openCamera()
+        } else {
+            android.widget.Toast.makeText(this, "Izin kamera diperlukan", android.widget.Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val galleryLauncher = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.GetContent()) { uri ->
+        uri?.let {
+            val localFile = saveUriToLocalFile(it)
+            localFile?.let { file ->
+                val localUri = android.net.Uri.fromFile(file)
+                binding.etImageUrl.setText(localUri.toString())
+                com.bumptech.glide.Glide.with(this)
+                    .load(localUri)
+                    .placeholder(R.drawable.ic_document)
+                    .into(binding.imgPreview)
+            }
+        }
+    }
+
+    private fun saveUriToLocalFile(uri: android.net.Uri): java.io.File? {
+        return try {
+            val inputStream = contentResolver.openInputStream(uri)
+            val file = java.io.File(filesDir, "doc_${System.currentTimeMillis()}.jpg")
+            val outputStream = java.io.FileOutputStream(file)
+            inputStream?.copyTo(outputStream)
+            inputStream?.close()
+            outputStream.close()
+            file
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    private fun hasCameraPermission(): Boolean {
+        return androidx.core.content.ContextCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.CAMERA
+        ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun openCamera() {
+        val intent = android.content.Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+        currentPhotoUri = createGalleryPhotoUri()
+        intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, currentPhotoUri)
+        cameraLauncher.launch(intent)
+    }
+
+    private fun createGalleryPhotoUri(): android.net.Uri {
+        val folderName = "TestCaptures"
+        val values = android.content.ContentValues().apply {
+            put(android.provider.MediaStore.Images.Media.DISPLAY_NAME, "IMG_${System.currentTimeMillis()}.jpg")
+            put(android.provider.MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                put(android.provider.MediaStore.Images.Media.RELATIVE_PATH, "Pictures/${folderName}")
+            }
+        }
+        return contentResolver.insert(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+            ?: throw RuntimeException("Gagal membuat URI MediaStore")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityKematianFormBinding.inflate(layoutInflater)
@@ -38,6 +118,19 @@ class KematianFormActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+
+        // Camera & Gallery click listeners
+        binding.btnCamera.setOnClickListener {
+            if (hasCameraPermission()) {
+                openCamera()
+            } else {
+                permissionLauncher.launch(android.Manifest.permission.CAMERA)
+            }
+        }
+
+        binding.btnGallery.setOnClickListener {
+            galleryLauncher.launch("image/*")
         }
 
         // Detect Edit Mode
@@ -177,6 +270,13 @@ class KematianFormActivity : AppCompatActivity() {
                 binding.etSebab.setText(it.sebabKematian)
                 binding.etAlamat.setText(it.alamat)
                 binding.etImageUrl.setText(it.imageUrl)
+                if (it.imageUrl.isNotEmpty()) {
+                    com.bumptech.glide.Glide.with(this@KematianFormActivity)
+                        .load(it.imageUrl)
+                        .placeholder(R.drawable.ic_document)
+                        .error(R.drawable.ic_document)
+                        .into(binding.imgPreview)
+                }
                 if (it.jenisKelamin == "Laki-laki") {
                     binding.rbLaki.isChecked = true
                 } else {
