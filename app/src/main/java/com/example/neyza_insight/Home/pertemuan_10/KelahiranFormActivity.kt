@@ -94,7 +94,7 @@ class KelahiranFormActivity : AppCompatActivity() {
     }
 
     private fun createGalleryPhotoUri(): android.net.Uri {
-        val folderName = "TestCaptures"
+        val folderName = "Neyza-DataPenduduk"
         val values = android.content.ContentValues().apply {
             put(android.provider.MediaStore.Images.Media.DISPLAY_NAME, "IMG_${System.currentTimeMillis()}.jpg")
             put(android.provider.MediaStore.Images.Media.MIME_TYPE, "image/jpeg")

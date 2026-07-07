@@ -46,13 +46,67 @@ class DataPeristiwaActivity : AppCompatActivity() {
 
         // 3. Hubungkan TabLayout & ViewPager2 menggunakan TabLayoutMediator
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            // Mengatur judul bagi setiap tab peristiwa
+            // Mengatur judul dan ikon bagi setiap tab peristiwa
             when (position) {
-                0 -> tab.text = "Kelahiran"
-                1 -> tab.text = "Kematian"
-                2 -> tab.text = "Perpindahan"
+                0 -> {
+                    tab.text = "Kelahiran"
+                    tab.setIcon(R.drawable.ic_kelahiran)
+                }
+                1 -> {
+                    tab.text = "Kematian"
+                    tab.setIcon(R.drawable.ic_kematian)
+                }
+                2 -> {
+                    tab.text = "Perpindahan"
+                    tab.setIcon(R.drawable.ic_perpindahan)
+                }
             }
         }.attach()
+
+        // 4. Tambahkan Badge jumlah draft secara dinamis dari database (hanya untuk data yang berstatus Draft)
+        lifecycleScope.launch {
+            try {
+                val db = com.example.neyza_insight.data.AppDatabase.getInstance(this@DataPeristiwaActivity)
+                val kelahiranDraftCount = db.kelahiranDao().getAll().filter { it.status == "Draft" }.size
+                val kematianDraftCount = db.kematianDao().getAll().filter { it.status == "Draft" }.size
+                val perpindahanDraftCount = db.pindahanDao().getAll().filter { it.status == "Draft" }.size
+
+                val redColor = android.graphics.Color.parseColor("#EF4444")
+                val whiteColor = android.graphics.Color.WHITE
+
+                if (kelahiranDraftCount > 0) {
+                    binding.tabLayout.getTabAt(0)?.orCreateBadge?.apply {
+                        number = kelahiranDraftCount
+                        backgroundColor = redColor
+                        badgeTextColor = whiteColor
+                    }
+                } else {
+                    binding.tabLayout.getTabAt(0)?.removeBadge()
+                }
+
+                if (kematianDraftCount > 0) {
+                    binding.tabLayout.getTabAt(1)?.orCreateBadge?.apply {
+                        number = kematianDraftCount
+                        backgroundColor = redColor
+                        badgeTextColor = whiteColor
+                    }
+                } else {
+                    binding.tabLayout.getTabAt(1)?.removeBadge()
+                }
+
+                if (perpindahanDraftCount > 0) {
+                    binding.tabLayout.getTabAt(2)?.orCreateBadge?.apply {
+                        number = perpindahanDraftCount
+                        backgroundColor = redColor
+                        badgeTextColor = whiteColor
+                    }
+                } else {
+                    binding.tabLayout.getTabAt(2)?.removeBadge()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {

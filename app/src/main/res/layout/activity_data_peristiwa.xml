@@ -23,6 +23,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/scholar_blue"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
         app:tabTextColor="#80FFFFFF"
         app:tabSelectedTextColor="@android:color/white"
         app:tabIndicatorColor="@android:color/white"
