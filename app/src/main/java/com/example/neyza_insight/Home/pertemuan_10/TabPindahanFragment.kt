@@ -519,6 +519,7 @@ class TabPindahanFragment : Fragment() {
         val tvTitle = dialogView.findViewById<android.widget.TextView>(R.id.tvTitle)
         val tvDetails = dialogView.findViewById<android.widget.TextView>(R.id.tvDetails)
         val imgAttachment = dialogView.findViewById<android.widget.ImageView>(R.id.imgAttachment)
+        val imgQrCode = dialogView.findViewById<android.widget.ImageView>(R.id.imgQrCode)
 
         tvTitle.text = "Detail Peristiwa Perpindahan"
         tvDetails.text = 
@@ -537,6 +538,13 @@ class TabPindahanFragment : Fragment() {
             .placeholder(R.drawable.ic_document)
             .error(R.drawable.ic_document)
             .into(imgAttachment)
+
+        try {
+            val qrBitmap = com.example.neyza_insight.data.QrCodeHelper.createQR("pindahan:${entity.id}")
+            imgQrCode.setImageBitmap(qrBitmap)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
             .setView(dialogView)

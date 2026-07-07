@@ -79,5 +79,35 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- QR Code Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/urbanist_bold"
+            android:textColor="@color/scholar_blue"
+            android:textSize="14sp"
+            android:text="QR Code Identitas Peristiwa" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/scholar_border"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/imgQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
+                android:contentDescription="QR Code" />
+
+        </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

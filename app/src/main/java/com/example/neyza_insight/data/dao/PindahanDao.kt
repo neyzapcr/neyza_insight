@@ -12,6 +12,9 @@ interface PindahanDao {
     @Query("SELECT * FROM pindahan ORDER BY id DESC")
     suspend fun getAll(): List<PindahanEntity>
 
+    @Query("SELECT * FROM pindahan WHERE id = :id")
+    suspend fun getById(id: Int): PindahanEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(pindahan: PindahanEntity): Long
 

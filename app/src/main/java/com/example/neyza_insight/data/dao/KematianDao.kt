@@ -12,6 +12,9 @@ interface KematianDao {
     @Query("SELECT * FROM kematian ORDER BY id DESC")
     suspend fun getAll(): List<KematianEntity>
 
+    @Query("SELECT * FROM kematian WHERE id = :id")
+    suspend fun getById(id: Int): KematianEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(kematian: KematianEntity): Long
 

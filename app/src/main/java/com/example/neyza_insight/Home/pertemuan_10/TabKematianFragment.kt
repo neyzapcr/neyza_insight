@@ -489,6 +489,7 @@ class TabKematianFragment : Fragment() {
         val tvTitle = dialogView.findViewById<android.widget.TextView>(R.id.tvTitle)
         val tvDetails = dialogView.findViewById<android.widget.TextView>(R.id.tvDetails)
         val imgAttachment = dialogView.findViewById<android.widget.ImageView>(R.id.imgAttachment)
+        val imgQrCode = dialogView.findViewById<android.widget.ImageView>(R.id.imgQrCode)
 
         tvTitle.text = "Detail Peristiwa Kematian"
         tvDetails.text = 
@@ -507,6 +508,13 @@ class TabKematianFragment : Fragment() {
             .placeholder(R.drawable.ic_document)
             .error(R.drawable.ic_document)
             .into(imgAttachment)
+
+        try {
+            val qrBitmap = com.example.neyza_insight.data.QrCodeHelper.createQR("kematian:${entity.id}")
+            imgQrCode.setImageBitmap(qrBitmap)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
             .setView(dialogView)
