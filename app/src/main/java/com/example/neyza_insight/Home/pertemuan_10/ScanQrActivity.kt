@@ -14,11 +14,16 @@ import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.neyza_insight.databinding.ActivityScanQrBinding
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -26,6 +31,7 @@ class ScanQrActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityScanQrBinding
     private lateinit var cameraExecutor: ExecutorService
+    private var isProcessed = false
 
     private val scanner = BarcodeScanning.getClient(
         BarcodeScannerOptions.Builder()
@@ -77,21 +83,21 @@ class ScanQrActivity : AppCompatActivity() {
                 .build()
                 .apply {
                     setAnalyzer(cameraExecutor) { imageProxy ->
+                        if (isProcessed) {
+                            imageProxy.close()
+                            return@setAnalyzer
+                        }
                         val mediaImage = imageProxy.image ?: return@setAnalyzer imageProxy.close()
                         val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
 
                         scanner.process(image)
                             .addOnSuccessListener { barcodes ->
-                                if (barcodes.isNotEmpty()) {
+                                if (barcodes.isNotEmpty() && !isProcessed) {
                                     val rawValue = barcodes[0].rawValue
                                     if (rawValue != null && isValidQrCode(rawValue)) {
+                                        isProcessed = true
                                         runOnUiThread {
-                                            binding.tvScanResult.text = "Hasil: $rawValue"
-                                            val resultIntent = Intent().apply {
-                                                putExtra("EXTRA_SCAN_RESULT", rawValue)
-                                            }
-                                            setResult(Activity.RESULT_OK, resultIntent)
-                                            finish()
+                                            handleDetectedQr(rawValue)
                                         }
                                     }
                                 }
@@ -112,6 +118,48 @@ class ScanQrActivity : AppCompatActivity() {
                 Log.e("ScanQrActivity", "Gagal mulai kamera", e)
             }
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun handleDetectedQr(rawValue: String) {
+        val parts = rawValue.split(":")
+        val type = parts[0]
+        val id = parts[1].toInt()
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            binding.tvScanResult.text = "Memproses data..."
+
+            val db = com.example.neyza_insight.data.AppDatabase.getInstance(this@ScanQrActivity)
+            val name = withContext(Dispatchers.IO) {
+                when (type) {
+                    "kelahiran" -> db.kelahiranDao().getById(id)?.nama
+                    "kematian" -> db.kematianDao().getById(id)?.nama
+                    "pindahan" -> db.pindahanDao().getById(id)?.nama
+                    else -> null
+                }
+            }
+
+            if (name != null) {
+                val formattedType = when (type) {
+                    "kelahiran" -> "Kelahiran"
+                    "kematian" -> "Kematian"
+                    "pindahan" -> "Perpindahan"
+                    else -> type
+                }
+                binding.tvScanResult.text = "Hasil: Data $formattedType Ditemukan!\nNama: $name"
+                delay(2000)
+
+                val resultIntent = Intent().apply {
+                    putExtra("EXTRA_SCAN_RESULT", rawValue)
+                }
+                setResult(Activity.RESULT_OK, resultIntent)
+                finish()
+            } else {
+                binding.tvScanResult.text = "Data $type dengan ID $id tidak ditemukan"
+                delay(2000)
+                isProcessed = false
+                binding.tvScanResult.text = "Arahkan ke QR Code"
+            }
+        }
     }
 
     private fun isValidQrCode(value: String): Boolean {
